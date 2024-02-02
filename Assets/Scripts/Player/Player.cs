@@ -5,35 +5,40 @@ using Utility.ScriptableObject;
 
 public abstract class Player : MonoBehaviour
 {
-    [SerializeField] protected InputController inputController;
-    [SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected Transform playerThrowTsf;
-    [SerializeField] protected ItemObj currentItem;
     [SerializeField] protected float pickRange;
-    [SerializeField] protected float maxHp;
     
     [SerializeField] protected float invincibleTime;
-    [SerializeField] private int isInvincible = 0;
-    
-    protected float currentHp;
 
+    [SerializeField] protected float attackCooldown;
+    [SerializeField] protected float stackedDamage;
+    
+    [Header("Dont Touch")]
+    [SerializeField] private int isInvincible;
+    [SerializeField] protected ItemObj currentItem;
+    
+    [SerializeField] protected InputController inputController;
+    [SerializeField] protected PlayerMovement playerMovement;
+    [SerializeField] protected AnimationAdaptor playerAnimation;
     private void Awake()
     {
-        currentHp = maxHp;
+        
+        playerAnimation = GetComponent<AnimationAdaptor>();
     }
 
     public void Heal(float healAmount)
     {
-        currentHp = Mathf.Min(currentHp + healAmount, maxHp);
+        stackedDamage -= healAmount;
+        if (stackedDamage < 0) stackedDamage = 0;
     }
 
     public void TakeDamage(float damage, Vector2 knockbackDir = default, float knockbackPower = 0)
     {
         if(isInvincible > 0) return;
         
-        currentHp -= damage;
-        if (currentHp <= 0) Die();
-        playerMovement.Knockback(knockbackDir, knockbackPower);
+        stackedDamage += damage;
+        playerMovement.Knockback(knockbackDir, knockbackPower * (1 + stackedDamage * 0.01f));
+        playerAnimation.GetHit(knockbackPower >= 10 ? 0.5f : 0.1f, knockbackPower);
         
         Invincible();
     }
@@ -99,7 +104,6 @@ public abstract class Player : MonoBehaviour
         yield return new WaitForSeconds(invincibleTime);
         isInvincible--;
     }
-
 
     protected abstract void Attack();
     protected abstract void Skill();

@@ -19,9 +19,9 @@ MonoBehaviour:
     - Right
     - Left
     - Jump
-    - Pick
-    - Attack
     - Skill
     - Ultimate
-    values: 640000006100000077000000730000006a0000006b0000006c000000
+    - Attack
+    - Pick
+    values: 6400000061000000770000006b0000006c0000006a00000073000000
   canInput: 1

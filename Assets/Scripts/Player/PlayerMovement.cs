@@ -8,6 +8,7 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Utility.ScriptableObject;
 
 public class PlayerMovement : MonoBehaviour
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 	//Jump
 	private bool _isJumpCut;
 	private bool _isJumpFalling;
+    private int _jumpCount;
 
 	#endregion
 
@@ -81,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
 		#endregion
 
 		#region INPUT HANDLER
+        
 		if(inputController.GetKey("Right")) _moveInput.x = 1;
 		else if(inputController.GetKey("Left")) _moveInput.x = -1;
 		else _moveInput.x = 0;
@@ -106,12 +109,13 @@ public class PlayerMovement : MonoBehaviour
 			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) //checks if set box overlaps with ground
 			{
 				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
+                _jumpCount = 0;
             }		
 		}
 		#endregion
 
 		#region JUMP CHECKS
-		if (IsJumping && RB.velocity.y <= 0)
+		if (IsJumping && RB.velocity.y < 0)
 		{
 			IsJumping = false;
 
@@ -263,8 +267,12 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region JUMP METHODS
+    
+    public UnityEvent OnJump = new UnityEvent();
     private void Jump()
 	{
+        OnJump.Invoke();
+        
 		//Ensures we can't call Jump multiple times from one press
 		LastPressedJumpTime = 0;
 		LastOnGroundTime = 0;
@@ -279,7 +287,9 @@ public class PlayerMovement : MonoBehaviour
 
 		RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
 		#endregion
-	}
+
+        _jumpCount++;
+    }
     #endregion
 
 
@@ -292,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanJump()
     {
-	    return (LastOnGroundTime > 0 && !IsJumping);
+	    return (LastOnGroundTime > 0 && !IsJumping) || _jumpCount < 2;
     }
 
 	private bool CanJumpCut()
@@ -320,9 +330,10 @@ public class PlayerMovement : MonoBehaviour
         RB.AddForce(knockbackDir.normalized * knockbackPower, ForceMode2D.Impulse);
 
         // Prevent the player from jumping while being knocked back
-        IsJumping = true;
+        IsJumping = false;
         _isJumpCut = false;
         _isJumpFalling = false;
+        _jumpCount = 1;
 
         
         StartCoroutine(RagdollCoroutine(0.1f));
@@ -338,29 +349,7 @@ public class PlayerMovement : MonoBehaviour
         _isConst = false;
     }
     
-    
-    
-    
-
-
     private bool _isConst;
-    public void SetConstState(bool isConst)
-    {
-        if (isConst)
-        {
-            RB.velocity = Vector2.zero;
-            SetGravityScale(0);
-            
-            _isConst = true;
-            IsJumping = false;
-            _isJumpCut = false;
-            _isJumpFalling = false;
-            return;
-        }
-        
-        RB.gravityScale = Data.gravityScale;
-        _isConst = false;
-    }
 }
 
 // created by Dawnosaur :D

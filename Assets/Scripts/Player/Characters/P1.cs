@@ -29,18 +29,57 @@ public class P1 : Player
     private Vector2 direction => playerMovement.IsFacingRight ? new Vector2(1, 1) : new Vector2(-1, 1);
     
     
+    private bool _canAttack = true;
     protected override void Attack()
     {
+        if (!_canAttack) return;
+        
+        playerAnimation.OnAttack();
         Debug.Log("Attack!");
         
-        //attack
-        var colliders = Physics2D.OverlapCircleAll(attackTsf.position, attackRange);
-        foreach (var collider in colliders)
+        //attack : check colliders while 0.5 seconds
+        StartCoroutine(AttackCoroutine());
+        
+        //cooldown
+        StartCoroutine(AttackCooldown());
+    }
+    
+    private IEnumerator AttackCoroutine()
+    {
+        //set const movement
+        // playerMovement.SetConstState(true);
+        inputController.canInput = false;
+        
+        //create set collection
+        HashSet<Player> attackedPlayers = new HashSet<Player>();
+        
+        float time = 0;
+        while (time < attackCooldown)
         {
-            var enemy = collider.GetComponent<Player>();
-            if (enemy == null || enemy == this) continue;
-            enemy.TakeDamage(attackDamage, attackKnockbackDir * direction, attackKnockbackPower);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(attackTsf.position, attackRange);
+            foreach (var collider in colliders)
+            {
+                var enemy = collider.GetComponent<Player>();
+                if (enemy != null && enemy != this && !attackedPlayers.Contains(enemy))
+                {
+                    enemy.TakeDamage(attackDamage, attackKnockbackDir * direction, attackKnockbackPower);
+                    attackedPlayers.Add(enemy);
+                }
+            }
+            time += Time.deltaTime;
+            yield return null;
         }
+        
+        
+        // playerMovement.SetConstState(false);
+        inputController.canInput = true;
+    }
+    
+    private IEnumerator AttackCooldown()
+    {
+        _canAttack = false;
+        yield return new WaitForSeconds(attackCooldown);
+        _canAttack = true;
     }
 
     private bool _isUsingSkill;

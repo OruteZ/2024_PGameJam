@@ -14,6 +14,11 @@ namespace Utility.ScriptableObject
         private SerializableDictionary<string, KeyCode> inputDataDic;
         public bool canInput = true;
         
+        public KeyCode SearchKey(string name)
+        {
+            return inputDataDic[name];
+        }
+        
         # region INPUT
         public bool GetKeyDown(string name)
         {
@@ -37,14 +42,27 @@ namespace Utility.ScriptableObject
 
         public void SetKey(string name, KeyCode keyCode)
         {
-            if (inputDataDic.ContainsKey(name))
-            {
-                inputDataDic[name] = keyCode;
-            }
-            else
+            if (inputDataDic.ContainsKey(name) == false)
             {
                 Debug.LogError("There is no input name \"" + name + "\"");
+                return;
             }
+            if(inputDataDic[name] == keyCode) return;
+            
+            //if there is a key in the dictionary values that is same as the input key code change each other
+            foreach (var key in inputDataDic.Keys)
+            {
+                if (inputDataDic[key] == keyCode)
+                {
+                    inputDataDic.Remove(key);
+                    
+                    inputDataDic[key] = inputDataDic[name];
+                    inputDataDic[name] = keyCode;
+                    return;
+                }
+            }
+            inputDataDic[name] = keyCode;
+            
         }
     }
 }
