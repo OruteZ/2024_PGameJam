@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 	//just paste in all the parameters, though you will need to manuly change all references in this script
 	public PlayerData Data;
 	public InputController inputController;
+	public int playerNumber;
 
 	#region COMPONENTS
     public Rigidbody2D RB { get; private set; }
@@ -79,17 +80,19 @@ public class PlayerMovement : MonoBehaviour
 		#endregion
 
 		#region INPUT HANDLER
-		_moveInput.x = Input.GetAxisRaw("Horizontal");
+		if(inputController.GetKey("Right" + playerNumber)) _moveInput.x = 1;
+		else if(inputController.GetKey("Left" + playerNumber)) _moveInput.x = -1;
+		else _moveInput.x = 0;
 
 		if (_moveInput.x != 0)
 			CheckDirectionToFace(_moveInput.x > 0);
 
-		if(inputController.GetKeyDown("Jump"))
+		if(inputController.GetKeyDown("Jump" + playerNumber))
         {
 			OnJumpInput();
         }
 
-		if (inputController.GetKeyUp("Jump"))
+		if (inputController.GetKeyUp("Jump" + playerNumber))
 		{
 			OnJumpUpInput();
 		}

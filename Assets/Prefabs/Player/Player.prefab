@@ -138,7 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: fc791711c86708249b623556d1e75c90, type: 2}
-  inputController: {fileID: 11400000, guid: 37cbad59c9d43f94ca7ec9ca45f0c778, type: 2}
+  inputController: {fileID: 11400000, guid: 4d11375ccf95aad40acb322dbfb3cbd8, type: 2}
+  playerNumber: 0
   _groundCheckPoint: {fileID: 4199010623958654139}
   _groundCheckSize: {x: 0.49, y: 0.03}
   _groundLayer:
