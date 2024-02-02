@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usingPlayer: {fileID: 0}
   throwingObj: {fileID: 8783381142506479513, guid: c479175ab5c439a4f93f0420c393e91d, type: 3}
-  throwForceAmount: 10
+  throwForceAmount: 30
 --- !u!70 &2075312341396097324
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

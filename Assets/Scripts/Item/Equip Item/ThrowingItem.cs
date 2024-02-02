@@ -31,7 +31,7 @@ public class ThrowingItem : EquipItemObj//던지는 아이템
             Debug.LogError("던지는 옵젝에 리지드바디 없다??");
         }
 
-        rb.AddForce(usingPlayer.GetFacing() * throwForceAmount);//힘 부여해서 던지기
+        rb.AddForce(usingPlayer.GetFacing() * throwForceAmount,ForceMode2D.Impulse);//힘 부여해서 던지기
 
         isDestroyed = true;
         Destroy(this.gameObject);
