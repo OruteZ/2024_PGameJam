@@ -52,8 +52,8 @@ public abstract class Player : MonoBehaviour
     public void Update()
     {
         if (inputController.GetKeyDown("Pick"+playerMovement.playerNumber)) Pick();
-        if (inputController.GetKeyDown("Attack"+playerMovement.playerNumber) && currentItem != null) Use();
         if (inputController.GetKeyDown("Attack"+playerMovement.playerNumber) && currentItem == null) Attack();
+        if (inputController.GetKeyDown("Attack"+playerMovement.playerNumber) && currentItem != null) Use();
         if (inputController.GetKeyDown("Skill"+playerMovement.playerNumber)) Skill();
         if (inputController.GetKeyDown("Ultimate"+playerMovement.playerNumber)) Ultimate();
     }
