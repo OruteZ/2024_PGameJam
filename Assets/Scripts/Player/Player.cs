@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using Utility.ScriptableObject;
 
 public abstract class Player : MonoBehaviour
@@ -9,6 +11,9 @@ public abstract class Player : MonoBehaviour
     [SerializeField] protected ItemObj currentItem;
     [SerializeField] protected float pickRange;
     [SerializeField] protected float maxHp;
+    
+    [SerializeField] protected float invincibleTime;
+    [SerializeField] private bool isInvincible;
     
     protected float currentHp;
 
@@ -24,9 +29,13 @@ public abstract class Player : MonoBehaviour
 
     public void TakeDamage(float damage, Vector2 knockbackDir = default, float knockbackPower = 0)
     {
+        if(isInvincible) return;
+        
         currentHp -= damage;
         if (currentHp <= 0) Die();
         playerMovement.Knockback(knockbackDir, knockbackPower);
+        
+        Invincible();
     }
     
     public Vector2 GetFacing()
@@ -78,6 +87,19 @@ public abstract class Player : MonoBehaviour
     {
         
     }
+
+    private void Invincible()
+    {
+        StartCoroutine(InvincibleCoroutine());
+    }
+    
+    private IEnumerator InvincibleCoroutine()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
+    }
+
 
     protected abstract void Attack();
     protected abstract void Skill();
