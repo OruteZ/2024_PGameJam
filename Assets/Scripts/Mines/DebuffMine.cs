@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebuffMine : MonoBehaviour
+public class DebuffMine : Mine
 {
-    [SerializeField] float damageAmount = 10f;
+    //[SerializeField] protected float damageAmount = 10f;
 
     [Header("Debuff Setting")]
     [SerializeField] float frictionAmount = 0.2f;
@@ -13,20 +13,9 @@ public class DebuffMine : MonoBehaviour
 
     PhysicsMaterial2D phMat;
 
-    bool isUsed = false;
+    //bool isUsed = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        isUsed = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isUsed) return;
@@ -36,11 +25,27 @@ public class DebuffMine : MonoBehaviour
             ApplyDebuff(collision.gameObject.GetComponent<Player>());
         }
     }
+    */
+
+    protected override void Init()
+    {
+        base.Init();
+        
+    }
+
+    protected override bool ExcuteMine(Player player)
+    {
+        //Debug.Log("버프 적용됨");
+
+        if (!base.ExcuteMine(player)) return false;
+
+        ApplyDebuff(player);
+
+        return true;
+    }
 
     void ApplyDebuff(Player player)
     {
-        if (isUsed) return;
-        isUsed = true;
 
         player.TakeDamage(damageAmount);
 
@@ -49,6 +54,11 @@ public class DebuffMine : MonoBehaviour
 
         phMat.friction *= frictionAmount;
 
+        GetComponent<SpriteRenderer>().enabled = false;//스프라이트 끄기
+        GetComponent<Collider2D>().enabled = false;
+
+        Debug.Log("버프 적용됨");
+
         Invoke(nameof(UnApplyDebuff), debuffTime);
     }
 
@@ -56,6 +66,8 @@ public class DebuffMine : MonoBehaviour
     {
         phMat.friction /= frictionAmount;
 
+
+        Debug.Log("버프 해제됨");
         Destroy(this.gameObject);
     }
 }

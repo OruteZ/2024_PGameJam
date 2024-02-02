@@ -55,7 +55,7 @@ public class TouchAndExplode : MonoBehaviour
             if (coll.gameObject.CompareTag("Player"))
             {
                 coll.gameObject.GetComponent<Player>().TakeDamage(explodeDamage, (coll.transform.position - transform.position).normalized, explodePower);
-                break;
+                continue;
             }
 
             Rigidbody2D rb = coll.gameObject.GetComponent<Rigidbody2D>();
