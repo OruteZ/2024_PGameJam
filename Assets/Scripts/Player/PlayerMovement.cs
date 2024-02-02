@@ -27,8 +27,12 @@ public class PlayerMovement : MonoBehaviour
 	//These are fields which can are public allowing for other sctipts to read them
 	//but can only be privately written to.
 	public bool IsFacingRight { get; private set; }
-	public bool IsJumping { get; private set; }
-	public bool IsSliding { get; private set; }
+
+	public bool IsJumping
+	{
+		get;
+		private set;
+	}
 
 	//Timers (also all fields, could be private and a method returning a bool could be used)
 	public float LastOnGroundTime { get; private set; }
@@ -43,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
 	private Vector2 _moveInput;
 
 	public float LastPressedJumpTime { get; private set; }
-	public float LastPressedDashTime { get; private set; }
 	#endregion
 
 	#region CHECK PARAMETERS
@@ -76,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
         LastOnGroundTime -= Time.deltaTime;
 
 		LastPressedJumpTime -= Time.deltaTime;
-		LastPressedDashTime -= Time.deltaTime;
 		#endregion
 
 		#region INPUT HANDLER
@@ -104,10 +106,6 @@ public class PlayerMovement : MonoBehaviour
 			//Ground Check
 			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) //checks if set box overlaps with ground
 			{
-				if(LastOnGroundTime < -0.1f)
-                {
-                }
-
 				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
             }		
 		}
@@ -140,11 +138,7 @@ public class PlayerMovement : MonoBehaviour
 
 		#region GRAVITY
 			//Higher gravity if we've released the jump input or are falling
-			if (IsSliding)
-			{
-				SetGravityScale(0);
-			}
-			else if (RB.velocity.y < 0)
+			if (RB.velocity.y < 0)
 			{
 				//Much higher gravity if holding down
 				SetGravityScale(Data.gravityScale * Data.fastFallGravityMult);
@@ -179,10 +173,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
 	{
 		Run(1);
-		
-		//Handle Slide
-		if (IsSliding)
-			Slide();
     }
 
     #region INPUT CALLBACKS
@@ -338,21 +328,13 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanJump()
     {
-		return LastOnGroundTime > 0 && !IsJumping;
+	    return (LastOnGroundTime > 0 && !IsJumping);
     }
 
 	private bool CanJumpCut()
     {
 		return IsJumping && RB.velocity.y > 0;
     }
-	
-	public bool CanSlide()
-    {
-		if (!IsJumping && LastOnGroundTime <= 0)
-			return true;
-		else
-			return false;
-	}
     #endregion
 
 

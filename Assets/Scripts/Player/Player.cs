@@ -3,44 +3,52 @@ using Utility.ScriptableObject;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private InputController inputController;
-    
-    //movement
+    [SerializeField] private InputController inputController;
     [SerializeField] private PlayerMovement playerMovement;
-    
-    //hp system
+    [SerializeField] private Transform playerHandTsf;
+    [SerializeField] private ItemObj currentItem;
+    [SerializeField] private float pickRange;
     [SerializeField] private float maxHp;
-    [SerializeField] private float currentHp;
-    
-    //heal
+    private float currentHp;
+
     public void Heal(float healAmount)
     {
-        currentHp += healAmount;
-        if (currentHp > maxHp)
+        currentHp = Mathf.Min(currentHp + healAmount, maxHp);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHp -= damage;
+        if (currentHp <= 0) Die();
+    }
+
+    private void Pick()
+    {
+        var colliders = Physics2D.OverlapCircleAll(playerHandTsf.position, pickRange);
+        foreach (var collider in colliders)
         {
-            currentHp = maxHp;
+            var item = collider.GetComponent<ItemObj>();
+            if (item == null) continue;
+            item.PickItem(this);
+            break;
         }
+    }
+
+    private void Use()
+    {
+        if (currentItem == null) return;
+        currentItem.TryUse(this, out bool isDestroyed);
+        if (isDestroyed) currentItem = null;
+    }
+
+    public virtual void Update()
+    {
+        if (inputController.GetKeyDown("Pick"+playerMovement.playerNumber)) Pick();
+        if (inputController.GetKeyDown("Attack"+playerMovement.playerNumber) && currentItem != null) Use();
     }
 
     public void Die()
     {
         
     }
-    
-    //damage
-    public void TakeDamage(float damage)
-    {
-        currentHp -= damage;
-        if (currentHp <= 0)
-        {
-            Die();
-        }
-    }
-
-    public Vector2 GetFacing() => playerMovement.IsFacingRight ? Vector2.right : Vector2.left;
-
-    // 2. 공격
-    // 3. 스킬
-    // 4. 궁극기
 }
