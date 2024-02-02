@@ -1,14 +1,17 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealPack : ConsumedItemObj
 {
+    [SerializeField] float healAmount = 20f;
+
     protected override void ConsumeItem()
     {
         base.ConsumeItem();
 
-        //ÇÃ·¹ÀÌ¾î¿¡°Ô ÈúÀº ÁØ´Ù
+        usingPlayer.Heal(healAmount);
+        //í”Œë ˆì´ì–´ì—ê²Œ íì€ ì¤€ë‹¤
 
         Destroy(this.gameObject);
     }
