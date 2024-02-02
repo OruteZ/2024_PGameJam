@@ -42,7 +42,7 @@ public class CameraShaker : MonoBehaviour//카메라 흔들어주는 클래스
         else
         {
             Vector2 pos = Vector2.zero;
-            pos += shakeDir * shakePower * moveCurve.Evaluate(time / defaultShakeDuration);
+            pos += shakeDir * (shakePower * moveCurve.Evaluate(time / defaultShakeDuration));
 
             transform.localPosition = pos;
 

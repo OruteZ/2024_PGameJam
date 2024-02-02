@@ -19,6 +19,15 @@ public class P1 : Player
     public Vector2 skillKnockbackDir;
     public float skillKnockbackPower;
     
+    [Header("Ultimate")]
+    public float ultimateDuration;
+    public GameObject ultimateShooter;
+    public Vector3 ultimateSpawnPosition;
+    public float spawnOffset;
+    public int ultimateDronesCount;
+
+    private Vector2 direction => playerMovement.IsFacingRight ? new Vector2(1, 1) : new Vector2(-1, 1);
+    
     
     protected override void Attack()
     {
@@ -30,7 +39,7 @@ public class P1 : Player
         {
             var enemy = collider.GetComponent<Player>();
             if (enemy == null || enemy == this) continue;
-            enemy.TakeDamage(attackDamage, attackKnockbackDir, attackKnockbackPower);
+            enemy.TakeDamage(attackDamage, attackKnockbackDir * direction, attackKnockbackPower);
         }
     }
 
@@ -46,7 +55,7 @@ public class P1 : Player
 
     protected override void Ultimate()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(UltimateCoroutine());
     }
     
     //draw gizmo
@@ -86,8 +95,27 @@ public class P1 : Player
             var enemy = collision.collider.GetComponent<Player>();
             if (enemy != null && enemy != this)
             {
-                enemy.TakeDamage(skillDamage, skillKnockbackDir, skillKnockbackPower);
+                enemy.TakeDamage(skillDamage, skillKnockbackDir * direction, skillKnockbackPower);
             }
+        }
+    }
+    
+    private IEnumerator UltimateCoroutine()
+    {
+        //spawn "ultimate spawn count" drones while ultimate duration
+        for (int i = 0; i < ultimateDronesCount; i++)
+        {
+            //spawn drone, randomized y position : maximum spawnOffset
+            var drone = Instantiate(
+                ultimateShooter, 
+                ultimateSpawnPosition + new Vector3(0, Random.Range(-spawnOffset, spawnOffset), 0), 
+                Quaternion.identity
+                );
+            
+            //set owner
+            drone.GetComponent<Drone>().SetOwner(this);
+            
+            yield return new WaitForSeconds(ultimateDuration / ultimateDronesCount);
         }
     }
 }

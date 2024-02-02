@@ -172,7 +172,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
 	{
-		Run(1);
+        if(_isConst) return;
+		    Run(1);
     }
 
     #region INPUT CALLBACKS
@@ -323,7 +324,24 @@ public class PlayerMovement : MonoBehaviour
         IsJumping = true;
         _isJumpCut = false;
         _isJumpFalling = false;
+
+        
+        StartCoroutine(RagdollCoroutine(0.1f));
     }
+    public IEnumerator RagdollCoroutine(float velocityThreshold)
+    {
+        _isConst = true;
+        // Rigidbody2D의 속도가 특정 임계값 이하가 될 때까지 기다림
+        while (RB.velocity.magnitude > velocityThreshold)
+        {
+            yield return null;  // 다음 프레임까지 기다림
+        }
+        _isConst = false;
+    }
+    
+    
+    
+    
 
 
     private bool _isConst;
