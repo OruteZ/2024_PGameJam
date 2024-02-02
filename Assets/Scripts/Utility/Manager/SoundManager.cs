@@ -5,7 +5,7 @@ using Utility.Generic;
 
 namespace Utility.Manager
 {
-    public class SoundManager : MonoBehaviour
+    public class SoundManager : Singleton<SoundManager>
     {
         public AudioSource backgroundMusicSource;
         public AudioClip[] soundEffectClips;
@@ -14,8 +14,15 @@ namespace Utility.Manager
         
         [SerializeField] private float soundEffectVolume = 1f;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            backgroundMusicSource = gameObject.AddComponent<AudioSource>();
+        }
+
         private void Start()
         {
+            
             GameObject audioSourcePrefab = new GameObject("PooledAudioSource");
             audioSourcePrefab.AddComponent<AudioSource>();
             audioSourcePrefab.SetActive(false);
@@ -70,5 +77,9 @@ namespace Utility.Manager
         {
             backgroundMusicSource.volume = volume;
         }
+        
+        public float SfxVolume => soundEffectVolume;
+        
+        public float BgmVolume => backgroundMusicSource.volume;
     }
 }

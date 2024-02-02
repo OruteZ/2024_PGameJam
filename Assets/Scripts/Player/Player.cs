@@ -13,7 +13,7 @@ public abstract class Player : MonoBehaviour
     [SerializeField] protected float maxHp;
     
     [SerializeField] protected float invincibleTime;
-    [SerializeField] private bool isInvincible;
+    [SerializeField] private int isInvincible = 0;
     
     protected float currentHp;
 
@@ -29,7 +29,7 @@ public abstract class Player : MonoBehaviour
 
     public void TakeDamage(float damage, Vector2 knockbackDir = default, float knockbackPower = 0)
     {
-        if(isInvincible) return;
+        if(isInvincible > 0) return;
         
         currentHp -= damage;
         if (currentHp <= 0) Die();
@@ -95,9 +95,9 @@ public abstract class Player : MonoBehaviour
     
     private IEnumerator InvincibleCoroutine()
     {
-        isInvincible = true;
+        isInvincible++;
         yield return new WaitForSeconds(invincibleTime);
-        isInvincible = false;
+        isInvincible--;
     }
 
 
