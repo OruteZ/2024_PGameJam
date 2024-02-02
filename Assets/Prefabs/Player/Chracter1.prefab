@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputController: {fileID: 11400000, guid: 4d11375ccf95aad40acb322dbfb3cbd8, type: 2}
   playerMovement: {fileID: 4199010623840103272}
-  playerHandTsf: {fileID: 6215333631400074115}
+  playerThrowTsf: {fileID: 6215333631400074115}
   currentItem: {fileID: 0}
   pickRange: 1
   maxHp: 100
