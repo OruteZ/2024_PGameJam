@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ConsumedItemObj : ItemObj
 {
-
+    
     public override bool TryUse(Player player, out bool isDestroyed)
     {
-        Debug.LogError("¹Ù·Î ¼ÒºñµÇ´Â ¿ÀºêÁ§Æ®ÀÎµ¥ »ç¿ëÀ» ÇÏ·ÁÇÏ´Â ¹ö±×°¡ »ı±ä´Ù");
+        Debug.LogError("ë°”ë¡œ ì†Œë¹„ë˜ëŠ” ì˜¤ë¸Œì íŠ¸ì¸ë° ì‚¬ìš©ì„ í•˜ë ¤í•˜ëŠ” ë²„ê·¸ê°€ ìƒê¸´ë‹¤");
 
         isDestroyed = true;
 
@@ -25,7 +25,7 @@ public class ConsumedItemObj : ItemObj
         return ItemType.Consumed;
     }
 
-    protected virtual void ConsumeItem()//½ÇÁ¦ È¿°ú ¹ß»ı ÇÔ¼ö
+    protected virtual void ConsumeItem()//ì‹¤ì œ íš¨ê³¼ ë°œìƒ í•¨ìˆ˜
     {
 
     }

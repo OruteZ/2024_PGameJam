@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ public class EquipItemObj : ItemObj
         }
         else
         {
-            return ItemType.Consumed;//ÀÌ¹Ì »ç¿ëµÇ¾ú°Å³ª ¼ÒºñµÈ ¾ÆÀÌÅÛÀÌ¸é Âø¿ë ¾ÈÇÏ°í ¹İÈ¯ÇÏ±â
+            return ItemType.Consumed;//ì´ë¯¸ ì‚¬ìš©ë˜ì—ˆê±°ë‚˜ ì†Œë¹„ëœ ì•„ì´í…œì´ë©´ ì°©ìš© ì•ˆí•˜ê³  ë°˜í™˜í•˜ê¸°
         }
     }
 
