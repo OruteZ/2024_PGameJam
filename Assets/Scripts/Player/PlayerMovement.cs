@@ -349,7 +349,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Knockback(Vector2 knockbackDir, float knockbackPower)
     {
-        //미구현
+        // Reset the player's current velocity
+        RB.velocity = Vector2.zero;
+
+        // Apply a force to the player in the knockback direction
+        RB.AddForce(knockbackDir.normalized * knockbackPower, ForceMode2D.Impulse);
+
+        // Prevent the player from jumping while being knocked back
+        IsJumping = true;
+        _isJumpCut = false;
+        _isJumpFalling = false;
     }
 }
 
