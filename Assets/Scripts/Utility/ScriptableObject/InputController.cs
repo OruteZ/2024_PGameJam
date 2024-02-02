@@ -12,20 +12,25 @@ namespace Utility.ScriptableObject
     {
         [SerializeField]
         private SerializableDictionary<string, KeyCode> inputDataDic;
+        public bool canInput = true;
         
         # region INPUT
         public bool GetKeyDown(string name)
         {
+            //if can input
+            if (!canInput) return false;
             return Input.GetKeyDown(inputDataDic[name]);
         }
         
         public bool GetKey(string name)
         {
+            if (!canInput) return false;
             return Input.GetKey(inputDataDic[name]);
         }
         
         public bool GetKeyUp(string name)
         {
+            if (!canInput) return false;
             return Input.GetKeyUp(inputDataDic[name]);
         }
         # endregion

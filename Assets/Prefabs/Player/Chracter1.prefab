@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2330594298183004302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 729550559845773914}
+  m_Layer: 0
+  m_Name: AtkTsf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729550559845773914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330594298183004302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4199010623840103287}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4199010623840103285
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +46,7 @@ GameObject:
   - component: {fileID: 4199010623840103272}
   - component: {fileID: 6113944902109164016}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Chracter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,6 +66,7 @@ Transform:
   m_Children:
   - {fileID: 4199010623958654139}
   - {fileID: 6215333631400074115}
+  - {fileID: 729550559845773914}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -165,7 +197,16 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   pickRange: 1
   maxHp: 100
-  spinningObj: {fileID: 0}
+  attackRange: 0.5
+  attackTsf: {fileID: 729550559845773914}
+  attackDamage: 1
+  attackKnockbackDir: {x: 1, y: 0}
+  attackKnockbackPower: 1
+  skillRange: 5
+  skillDuration: 1
+  skillDamage: 10
+  skillKnockbackDir: {x: 1, y: 1}
+  skillKnockbackPower: 5
 --- !u!1 &4199010623958654138
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6215333631400074115}
   m_Layer: 0
-  m_Name: FrontTSF
+  m_Name: ThrowTSF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6754850974820708122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: 0, z: 0}
+  m_LocalPosition: {x: 1.21, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

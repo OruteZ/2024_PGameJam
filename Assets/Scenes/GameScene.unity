@@ -684,6 +684,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6113944902109164016, guid: eeacb12d80644b54bae56ee7fcd46b14, type: 3}
+      propertyPath: skillRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113944902109164016, guid: eeacb12d80644b54bae56ee7fcd46b14, type: 3}
+      propertyPath: skillDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113944902109164016, guid: eeacb12d80644b54bae56ee7fcd46b14, type: 3}
       propertyPath: inputController
       value: 
       objectReference: {fileID: 11400000, guid: 4d11375ccf95aad40acb322dbfb3cbd8, type: 2}
