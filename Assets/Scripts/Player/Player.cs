@@ -53,6 +53,11 @@ public abstract class Player : MonoBehaviour
     {
         currentItem = null;
     }
+    
+    public Transform GetPlayerThrowTsf()
+    {
+        return playerThrowTsf;
+    }
 
     public void Update()
     {
