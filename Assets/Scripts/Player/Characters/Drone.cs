@@ -98,11 +98,11 @@ public class Drone : MonoBehaviour
             if (player != _usingPlayer)
             {
                 //calculate knockback direction
-                var direction = (player.transform.position - transform.position).normalized;
-                direction.y = 1; direction.Normalize();
+                bool isRight = transform.position.x < player.transform.position.x;
                 
+                Vector2 direction = new Vector3(isRight ? -1 : 1, 1, 0);
+
                 player.TakeDamage(damage, direction, knockbackPower);
-                Destroy(gameObject);
             }
         }
     }
