@@ -16,6 +16,9 @@ public class ThrowingItem : EquipItemObj//던지는 아이템
         this.transform.localPosition = Vector3.zero;//임시로 위치 플레이어 중심으로 잡음
 
         GetComponent<SpriteRenderer>().enabled = false;//스프라이트 꺼줌
+        GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        foreach (Collider2D coll in GetComponentsInChildren<Collider2D>()) coll.enabled = false;
     }
 
     protected override bool UseItem(out bool isDestroyed)
