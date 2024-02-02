@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Utility.Attribute;
 using Utility.Generic;
+using Utility.UI;
 
 namespace Utility.Manager
 {
@@ -17,7 +18,7 @@ namespace Utility.Manager
         // ReSharper disable once InconsistentNaming
         public float progress { get; private set; }
 
-        public GameObject loadingScreen; // Loading 화면을 참조하는 GameObject
+        public LoadingScreen loadingScreen; // Loading 화면을 참조하는 GameObject
 
         public void LoadScene(string sceneName, bool isAsync = false)
         {
@@ -38,12 +39,14 @@ namespace Utility.Manager
             onLoadStart.Invoke();
             if (loadingScreen != null)
             {
-                loadingScreen.SetActive(true); // Loading 화면 켜기
+                loadingScreen.gameObject.SetActive(true); // Loading 화면 켜기
             }
             else
             {
                 Debug.Log("Loading screen is null.");
             }
+
+            yield return loadingScreen.FadeIn();
 
             var asyncOperation = SceneManager.LoadSceneAsync(sceneName);
             while (!asyncOperation.isDone)
@@ -51,10 +54,12 @@ namespace Utility.Manager
                 progress = asyncOperation.progress;
                 yield return null;
             }
+            
+            yield return loadingScreen.FadeOut();
 
             if (loadingScreen != null)
             {
-                loadingScreen.SetActive(false); // Loading 화면 끄기
+                loadingScreen.gameObject.SetActive(false); // Loading 화면 끄기
             }
             else
             {
