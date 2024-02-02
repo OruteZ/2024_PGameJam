@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         if (currentHp <= 0) Die();
     }
     
-    public Vector2 GetFacingDirection()
+    public Vector2 GetFacing()
     {
         return playerMovement.IsFacingRight ? Vector2.right : Vector2.left;
     }
