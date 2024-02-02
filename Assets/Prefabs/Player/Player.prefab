@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: fc791711c86708249b623556d1e75c90, type: 2}
-  inputController: {fileID: 11400000, guid: 4d11375ccf95aad40acb322dbfb3cbd8, type: 2}
+  inputController: {fileID: 11400000, guid: 898642dbdddf08b479ef220e607daca2, type: 2}
   playerNumber: 1
   _groundCheckPoint: {fileID: 5999924820984556715}
   _groundCheckSize: {x: 0.49, y: 0.06}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5556ce0caeff4019a08a9206180d2156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputController: {fileID: 11400000, guid: 4d11375ccf95aad40acb322dbfb3cbd8, type: 2}
+  inputController: {fileID: 11400000, guid: 898642dbdddf08b479ef220e607daca2, type: 2}
   playerMovement: {fileID: 5999924820671688972}
   playerThrowTsf: {fileID: 5999924820398793030}
   currentItem: {fileID: 0}
