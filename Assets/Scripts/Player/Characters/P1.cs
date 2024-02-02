@@ -22,6 +22,8 @@ public class P1 : Player
     
     protected override void Attack()
     {
+        Debug.Log("Attack!");
+        
         //attack
         var colliders = Physics2D.OverlapCircleAll(attackTsf.position, attackRange);
         foreach (var collider in colliders)

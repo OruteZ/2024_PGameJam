@@ -23,7 +23,7 @@ MonoBehaviour:
     - Skill1
     - Ultimate1
     - Jump2
-    - RIght2
+    - Right2
     - Left2
     - Attack2
     - Skill2
@@ -31,3 +31,4 @@ MonoBehaviour:
     - Pick1
     - Pick2
     values: 7700000064000000610000006a0000006b0000006c0000001101000013010000140100000401000005010000060100007300000012010000
+  canInput: 1

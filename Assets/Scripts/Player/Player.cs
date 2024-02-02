@@ -9,7 +9,13 @@ public abstract class Player : MonoBehaviour
     [SerializeField] protected ItemObj currentItem;
     [SerializeField] protected float pickRange;
     [SerializeField] protected float maxHp;
+    
     protected float currentHp;
+
+    private void Awake()
+    {
+        currentHp = maxHp;
+    }
 
     public void Heal(float healAmount)
     {
