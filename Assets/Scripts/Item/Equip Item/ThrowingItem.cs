@@ -23,7 +23,7 @@ public class ThrowingItem : EquipItemObj//던지는 아이템
 
     protected override bool UseItem(out bool isDestroyed)
     {
-        GameObject obj = Instantiate(throwingObj, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(throwingObj, usingPlayer.GetPlayerThrowTsf().position, Quaternion.identity);
 
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
         if(rb == null)
