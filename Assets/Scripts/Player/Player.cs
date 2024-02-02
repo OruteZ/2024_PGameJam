@@ -5,7 +5,7 @@ public abstract class Player : MonoBehaviour
 {
     [SerializeField] protected InputController inputController;
     [SerializeField] protected PlayerMovement playerMovement;
-    [SerializeField] protected Transform playerHandTsf;
+    [SerializeField] protected Transform playerThrowTsf;
     [SerializeField] protected ItemObj currentItem;
     [SerializeField] protected float pickRange;
     [SerializeField] protected float maxHp;
@@ -30,7 +30,7 @@ public abstract class Player : MonoBehaviour
 
     private void Pick()
     {
-        var colliders = Physics2D.OverlapCircleAll(playerHandTsf.position, pickRange);
+        var colliders = Physics2D.OverlapCircleAll(playerThrowTsf.position, pickRange);
         foreach (var collider in colliders)
         {
             var item = collider.GetComponent<ItemObj>();
@@ -47,6 +47,11 @@ public abstract class Player : MonoBehaviour
         if (currentItem == null) return;
         currentItem.TryUse(this, out bool isDestroyed);
         if (isDestroyed) currentItem = null;
+    }
+
+    public void SudoUnEquip()
+    {
+        currentItem = null;
     }
 
     public void Update()

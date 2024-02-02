@@ -194,21 +194,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		RB.gravityScale = scale;
 	}
-
-	private void Sleep(float duration)
-    {
-		//Method used so we don't need to call StartCoroutine everywhere
-		//nameof() notation means we don't need to input a string directly.
-		//Removes chance of spelling mistakes and will improve error messages if any
-		StartCoroutine(nameof(PerformSleep), duration);
-    }
-
-	private IEnumerator PerformSleep(float duration)
-    {
-		Time.timeScale = 0;
-		yield return new WaitForSecondsRealtime(duration); //Must be Realtime since timeScale with be 0 
-		Time.timeScale = 1;
-	}
     #endregion
 
 	//MOVEMENT METHODS
@@ -296,27 +281,6 @@ public class PlayerMovement : MonoBehaviour
 		#endregion
 	}
     #endregion
-    
-	#region OTHER MOVEMENT METHODS
-	private void Slide()
-	{
-		//We remove the remaining upwards Impulse to prevent upwards sliding
-		if(RB.velocity.y > 0)
-		{
-		    RB.AddForce(-RB.velocity.y * Vector2.up,ForceMode2D.Impulse);
-		}
-	
-		//Works the same as the Run but only in the y-axis
-		//THis seems to work fine, buit maybe you'll find a better way to implement a slide into this system
-		float speedDif = Data.slideSpeed - RB.velocity.y;	
-		float movement = speedDif * Data.slideAccel;
-		//So, we clamp the movement here to prevent any over corrections (these aren't noticeable in the Run)
-		//The force applied can't be greater than the (negative) speedDifference * by how many times a second FixedUpdate() is called. For more info research how force are applied to rigidbodies.
-		movement = Mathf.Clamp(movement, -Mathf.Abs(speedDif)  * (1 / Time.fixedDeltaTime), Mathf.Abs(speedDif) * (1 / Time.fixedDeltaTime));
-
-		RB.AddForce(movement * Vector2.up);
-	}
-    #endregion
 
 
     #region CHECK METHODS
@@ -359,6 +323,26 @@ public class PlayerMovement : MonoBehaviour
         IsJumping = true;
         _isJumpCut = false;
         _isJumpFalling = false;
+    }
+
+
+    private bool _isConst;
+    public void SetConstState(bool isConst)
+    {
+        if (isConst)
+        {
+            RB.velocity = Vector2.zero;
+            SetGravityScale(0);
+            
+            _isConst = true;
+            IsJumping = false;
+            _isJumpCut = false;
+            _isJumpFalling = false;
+            return;
+        }
+        
+        RB.gravityScale = Data.gravityScale;
+        _isConst = false;
     }
 }
 
