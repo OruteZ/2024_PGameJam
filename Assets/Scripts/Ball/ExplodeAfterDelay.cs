@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TouchAndExplode : MonoBehaviour
+public class ExplodeAfterDelay : MonoBehaviour
 {
     [SerializeField] float explodeRange = 2f;
 
@@ -10,47 +10,32 @@ public class TouchAndExplode : MonoBehaviour
 
     [SerializeField, Space(5f)] float explodePower = 10f;
 
+    [SerializeField, Space(5f)] float explodeDelay = 5f;
+
     bool isDestroyed = false;
 
     ContactFilter2D filter;
 
-    // Start is called before the first frame update
     void Start()
     {
         isDestroyed = false;
 
         filter = new ContactFilter2D();
         //filter.SetLayerMask()
+
+        StartCoroutine("ExplodeDelay");
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator ExplodeDelay()//일정시간 기다린 후에 폭발
     {
-        
-    }
+        yield return new WaitForSeconds(explodeDelay);//일정시간 기다림
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.isTrigger) return;//충돌 가능 오브젝트들과 만 충돌하기
-
-        if (isDestroyed) return;
-        isDestroyed = true;
-
-        Explode();
-
-        Destroy(this.gameObject);
-
-    }
-
-    void Explode()
-    {
+        //이후 주위 오브젝트 폭발
         List<Collider2D> colls = new List<Collider2D>();
-
         Physics2D.OverlapCircle(transform.position, explodeRange, filter, colls);
 
         //Debug.Log(colls.Length);
-
-        foreach(Collider2D coll in colls)
+        foreach (Collider2D coll in colls)
         {
             if (coll.gameObject.CompareTag("Player"))
             {
@@ -61,9 +46,12 @@ public class TouchAndExplode : MonoBehaviour
             Rigidbody2D rb = coll.gameObject.GetComponent<Rigidbody2D>();
             if (rb)
             {
-                rb.AddForce(explodePower * (coll.transform.position - transform.position).normalized, ForceMode2D.Impulse);
+                rb.AddForce(explodePower * (coll.transform.position - transform.position).normalized,ForceMode2D.Impulse);
             }
 
         }
+
+        Destroy(this.gameObject);//이후 제거
+
     }
 }

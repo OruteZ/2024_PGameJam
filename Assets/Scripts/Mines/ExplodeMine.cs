@@ -31,7 +31,7 @@ public class ExplodeMine : Mine
             Rigidbody2D rb = coll.gameObject.GetComponent<Rigidbody2D>();
             if (rb)
             {
-                rb.AddForce(explodeForce * (coll.transform.position - transform.position).normalized);
+                rb.AddForce(explodeForce * (coll.transform.position - transform.position).normalized, ForceMode2D.Impulse);
             }
         }
 
