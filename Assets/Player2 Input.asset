@@ -10,25 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f98e0912d5c42e986df2ec725d28953, type: 3}
-  m_Name: InputController
+  m_Name: Player2 Input
   m_EditorClassIdentifier: 
   inputDataDic:
     defaultKey: 
     defaultValue: 0
     keys:
-    - Jump1
-    - Right1
-    - Left1
-    - Attack1
-    - Skill1
-    - Ultimate1
-    - Jump2
-    - Right2
-    - Left2
-    - Attack2
-    - Skill2
-    - Ultimate2
-    - Pick1
-    - Pick2
-    values: 7700000064000000610000006a0000006b0000006c0000001101000013010000140100000401000005010000060100007300000012010000
+    - Right
+    - Left
+    - Jump
+    - Pick
+    - Attack
+    - Skill
+    - Ultimate
+    values: 13010000140100001101000012010000040100000501000006010000
   canInput: 1
