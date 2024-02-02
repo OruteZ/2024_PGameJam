@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
         currentHp -= damage;
         if (currentHp <= 0) Die();
     }
+    
+    public Vector2 GetFacingDirection()
+    {
+        return playerMovement.IsFacingRight ? Vector2.right : Vector2.left;
+    }
 
     private void Pick()
     {
