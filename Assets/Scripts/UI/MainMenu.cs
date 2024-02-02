@@ -5,7 +5,6 @@ using Utility.Manager;
 
 public class MainMenu : MonoBehaviour
 {
-    //start btn, option btn, exit btn
     
     public void StartGame()
     {
