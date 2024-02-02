@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 using Utility.ScriptableObject;
 
-public class Player : MonoBehaviour
+public abstract class Player : MonoBehaviour
 {
-    [SerializeField] private InputController inputController;
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private Transform playerHandTsf;
-    [SerializeField] private ItemObj currentItem;
-    [SerializeField] private float pickRange;
-    [SerializeField] private float maxHp;
-    private float currentHp;
+    [SerializeField] protected InputController inputController;
+    [SerializeField] protected PlayerMovement playerMovement;
+    [SerializeField] protected Transform playerHandTsf;
+    [SerializeField] protected ItemObj currentItem;
+    [SerializeField] protected float pickRange;
+    [SerializeField] protected float maxHp;
+    protected float currentHp;
 
     public void Heal(float healAmount)
     {
         currentHp = Mathf.Min(currentHp + healAmount, maxHp);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Vector2 knockbackDir = default, float knockbackPower = 0)
     {
         currentHp -= damage;
         if (currentHp <= 0) Die();
+        playerMovement.Knockback(knockbackDir, knockbackPower);
     }
     
     public Vector2 GetFacing()
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour
         {
             var item = collider.GetComponent<ItemObj>();
             if (item == null) continue;
+
+            currentItem = item;
             item.PickItem(this);
             break;
         }
@@ -46,14 +49,21 @@ public class Player : MonoBehaviour
         if (isDestroyed) currentItem = null;
     }
 
-    public virtual void Update()
+    public void Update()
     {
         if (inputController.GetKeyDown("Pick"+playerMovement.playerNumber)) Pick();
         if (inputController.GetKeyDown("Attack"+playerMovement.playerNumber) && currentItem != null) Use();
+        if (inputController.GetKeyDown("Attack"+playerMovement.playerNumber) && currentItem == null) Attack();
+        if (inputController.GetKeyDown("Skill"+playerMovement.playerNumber)) Skill();
+        if (inputController.GetKeyDown("Ultimate"+playerMovement.playerNumber)) Ultimate();
     }
 
-    public void Die()
+    private void Die()
     {
         
     }
+
+    protected abstract void Attack();
+    protected abstract void Skill();
+    protected abstract void Ultimate();
 }

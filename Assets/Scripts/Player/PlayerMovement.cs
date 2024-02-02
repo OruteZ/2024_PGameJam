@@ -346,6 +346,11 @@ public class PlayerMovement : MonoBehaviour
 		Gizmos.color = Color.blue;
 	}
     #endregion
+
+    public void Knockback(Vector2 knockbackDir, float knockbackPower)
+    {
+        //미구현
+    }
 }
 
 // created by Dawnosaur :D
