@@ -3,7 +3,6 @@ using Utility.ScriptableObject;
 
 public class P1 : Player
 {
-    public GameObject spinningObj;
     
     protected override void Attack()
     {
