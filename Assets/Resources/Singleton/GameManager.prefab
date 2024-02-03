@@ -627,12 +627,14 @@ MonoBehaviour:
   player2Life: 3
   player1: {fileID: 5999924820671688969, guid: 879625a9963effc448143edc720d6787, type: 3}
   player2: {fileID: 5999924820671688969, guid: ae872ea8e6cbc8e46a5c16cb894df13b, type: 3}
-  player1SpawnPoint: {x: 2, y: 0, z: 0}
-  player2SpawnPoint: {x: -2, y: 0, z: 0}
+  player1SpawnPoint: {x: -2, y: 0, z: 0}
+  player2SpawnPoint: {x: 2, y: 0, z: 0}
   player1Reference: {fileID: 0}
   player2Reference: {fileID: 0}
   player1UltimateGauge: 0
   player2UltimateGauge: 0
+  ultimateUIEffect1: {fileID: 0}
+  ultimateUIEffect2: {fileID: 0}
   gameOverUI: {fileID: 6882575549994632999}
 --- !u!1 &6059027653625185884
 GameObject:

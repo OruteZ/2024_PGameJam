@@ -26,16 +26,16 @@ namespace Utility.Manager
                 backgroundMusicSource = gameObject.AddComponent<AudioSource>();
                 backgroundMusicSource.loop = true;
             }
-        }
-
-        private void Start()
-        {
             
             GameObject audioSourcePrefab = new GameObject("PooledAudioSource");
             audioSourcePrefab.AddComponent<AudioSource>();
             audioSourcePrefab.SetActive(false);
 
             _audioSourcePool = new GameObjectPool<AudioSource>(audioSourcePrefab, transform, 10);
+        }
+
+        private void Start()
+        {
         }
 
         public void PlaySFX(string name)

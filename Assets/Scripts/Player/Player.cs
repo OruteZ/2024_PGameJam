@@ -33,7 +33,6 @@ public abstract class Player : MonoBehaviour
     
     private void Awake()
     {
-        
         playerAnimation = GetComponent<AnimationAdaptor>();
     }
 
@@ -112,6 +111,7 @@ public abstract class Player : MonoBehaviour
         {
             Ultimate();
             ultimateGauge = 0;
+            GameManager.Instance.UltimateEffectStart(playerNumber);
         }
     }
 

@@ -22,7 +22,22 @@ public class GameManager : Singleton<GameManager>
     public float player1UltimateGauge = 0;
     public float player2UltimateGauge = 0;
 
+    public UltimateUIEffect ultimateUIEffect1;
+    public UltimateUIEffect ultimateUIEffect2;
+
     public GameOverUI gameOverUI;
+    
+    public void SetUltimateEffect(int playerNum, UltimateUIEffect effect)
+    {
+        if (playerNum == 1) ultimateUIEffect1 = effect;
+        else ultimateUIEffect2 = effect;
+    }
+    
+    public void UltimateEffectStart(int playerNum)
+    {
+        if (playerNum == 1) ultimateUIEffect1?.UltimateEffectStart();
+        else ultimateUIEffect2?.UltimateEffectStart();
+    }
 
     public void GameStart()
     {
