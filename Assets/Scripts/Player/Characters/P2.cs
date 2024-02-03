@@ -67,6 +67,8 @@ public class P2 : Player
 
     protected override void Skill()
     {
+        if (playerMovement.LastOnGroundTime <= 0) return;
+        
         //setup mine
         var mineObj = Instantiate(mine, mineSpawnTsf.position, Quaternion.identity);
         mineObj.GetComponent<MineSkill>().SetPlayer(this);

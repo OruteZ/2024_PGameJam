@@ -171,7 +171,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 7158d0ef087f7084cb886b062c1b82d7, type: 2}
+  m_Material: {fileID: 6200000, guid: 4480546d2733dac4c8b4df8dff51b20f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -190,12 +190,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: fc791711c86708249b623556d1e75c90, type: 2}
   inputController: {fileID: 11400000, guid: 898642dbdddf08b479ef220e607daca2, type: 2}
-  playerNumber: 1
   _groundCheckPoint: {fileID: 5999924820984556715}
   _groundCheckSize: {x: 0.49, y: 0.06}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  OnJump:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5999924820671688973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,14 +210,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5556ce0caeff4019a08a9206180d2156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerThrowTsf: {fileID: 5999924820398793030}
+  pickRange: 0.7
+  invincibleTime: 0
+  attackCooldown: 0
+  stackedDamage: 0
+  isInvincible: 0
+  currentItem: {fileID: 0}
   inputController: {fileID: 11400000, guid: 898642dbdddf08b479ef220e607daca2, type: 2}
   playerMovement: {fileID: 5999924820671688972}
-  playerThrowTsf: {fileID: 5999924820398793030}
-  currentItem: {fileID: 0}
-  pickRange: 0.7
-  maxHp: 100
-  invincibleTime: 0
-  isInvincible: 0
+  playerAnimation: {fileID: 0}
   attackRange: 0.5
   attackTsf: {fileID: 5999924819630953318}
   attackDamage: 1
@@ -290,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c675b8e9c6b274abbbe83c3bf190b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackTime: 0
 --- !u!1 &5999924820984556712
 GameObject:
   m_ObjectHideFlags: 0

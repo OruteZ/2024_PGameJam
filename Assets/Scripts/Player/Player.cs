@@ -5,6 +5,8 @@ using Utility.ScriptableObject;
 
 public abstract class Player : MonoBehaviour
 {
+    public int playerNumber;
+    
     [SerializeField] protected Transform playerThrowTsf;
     [SerializeField] protected float pickRange;
     
@@ -20,6 +22,14 @@ public abstract class Player : MonoBehaviour
     [SerializeField] protected InputController inputController;
     [SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected AnimationAdaptor playerAnimation;
+    
+    public float UltimateGauge { get; protected set; }
+    
+    public float GetStackedDamage()
+    {
+        return stackedDamage;
+    }
+    
     private void Awake()
     {
         
@@ -88,7 +98,11 @@ public abstract class Player : MonoBehaviour
         if (inputController.GetKeyDown("Attack") && currentItem == null) Attack();
         if (inputController.GetKeyDown("Attack") && currentItem != null) Use();
         if (inputController.GetKeyDown("Skill")) Skill();
-        if (inputController.GetKeyDown("Ultimate")) Ultimate();
+        if (inputController.GetKeyDown("Ultimate") && UltimateGauge >= 1f)
+        {
+            Ultimate();
+            UltimateGauge = 0;
+        }
     }
 
     private void Die()
