@@ -4,9 +4,17 @@ public class ItemObj : MonoBehaviour
 {
     [SerializeField] protected Player usingPlayer = null;//아이템을 사용하고 있는 플레이어
 
+    protected Sprite mainSprite;
+    public Sprite MainSprite { get => mainSprite; }
+
     private void Awake()
     {
         usingPlayer = null;
+    }
+
+    private void Start()
+    {
+        mainSprite = GetComponent<SpriteRenderer>().sprite;
     }
 
 
