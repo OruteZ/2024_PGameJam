@@ -101,8 +101,8 @@ public class GameManager : Singleton<GameManager>
     public void Dead(int deadPlayerNumber)
     {
         PlayerDie(deadPlayerNumber);
-        if (deadPlayerNumber == 1) player1UltimateGauge = player1Reference.ultimateGauge;
-        else player2UltimateGauge = player2Reference.ultimateGauge;
+        if (deadPlayerNumber == 1) player1UltimateGauge = player1Reference.ultimateGauge + 0.2f;
+        else player2UltimateGauge = player2Reference.ultimateGauge + 0.2f;
 
         SoundManager.Instance.PlaySFX("explosion");
         CameraShaker.Instance.ShakeCamera(1f);

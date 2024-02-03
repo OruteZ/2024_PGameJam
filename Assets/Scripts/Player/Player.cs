@@ -16,6 +16,9 @@ public abstract class Player : MonoBehaviour
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected float stackedDamage;
     
+    public float skillCooldown;
+    private bool _canUseSkill = true;
+    
     [Header("Dont Touch")]
     [SerializeField] private int isInvincible;
     [SerializeField] protected ItemObj currentItem;
@@ -84,6 +87,8 @@ public abstract class Player : MonoBehaviour
     {
         if (currentItem == null) return;
         currentItem.TryUse(this, out bool isDestroyed);
+        ultimateGauge += 0.02f;
+        
         if (isDestroyed) currentItem = null;
     }
 
@@ -106,13 +111,24 @@ public abstract class Player : MonoBehaviour
         if (inputController.GetKeyDown("Pick")) Pick();
         if (inputController.GetKeyDown("Attack") && currentItem == null) Attack();
         if (inputController.GetKeyDown("Attack") && currentItem != null) Use();
-        if (inputController.GetKeyDown("Skill")) Skill();
+        if (inputController.GetKeyDown("Skill") && _canUseSkill)
+        {
+            Skill();
+            StartCoroutine(SkillCoolDownCoroutine());
+        }
         if (inputController.GetKeyDown("Ultimate") && ultimateGauge >= 1f)
         {
             Ultimate();
             ultimateGauge = 0;
             GameManager.Instance.UltimateEffectStart(playerNumber);
         }
+    }
+
+    private IEnumerator SkillCoolDownCoroutine()
+    {
+        _canUseSkill = false;
+        yield return new WaitForSeconds(skillCooldown);
+        _canUseSkill = true;
     }
 
     private void Die()
