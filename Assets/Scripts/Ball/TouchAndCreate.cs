@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TouchAndCreate : MonoBehaviour
 {
+    [SerializeField] bool isChangingToSameSprite = false;
+
     [SerializeField] GameObject createObj;
 
     bool isDestroyed = false;
@@ -33,7 +35,12 @@ public class TouchAndCreate : MonoBehaviour
         if (isDestroyed) return;
         isDestroyed = true;
 
-        Instantiate(createObj, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(createObj, transform.position, Quaternion.identity);
+
+        if (isChangingToSameSprite)
+        {
+            obj.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+        }
 
         Destroy(this.gameObject);
 
