@@ -335,7 +335,6 @@ public class PlayerMovement : MonoBehaviour
         _isJumpFalling = false;
         _jumpCount = 1;
 
-        
         StartCoroutine(RagdollCoroutine(0.1f));
     }
     public IEnumerator RagdollCoroutine(float velocityThreshold)

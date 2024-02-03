@@ -15,6 +15,9 @@ public class GameManager : Singleton<GameManager>
     
     public Vector3 player1SpawnPoint;
     public Vector3 player2SpawnPoint;
+    
+    public Player player1Reference;
+    public Player player2Reference;
 
     public void GameStart()
     {
@@ -47,11 +50,22 @@ public class GameManager : Singleton<GameManager>
         yield return new WaitForSeconds(waitTime);
         
         var spawnedObj = Instantiate(playerNum == 1 ? player1 : player2);
-        
+
         // Set position
         spawnedObj.transform.position = playerNum == 1 ? player1SpawnPoint : player2SpawnPoint;
         
+        
         spawnedObj.GetComponent<Player>().playerNumber = playerNum;
+        
+        //set reference
+        if (playerNum == 1)
+        {
+            player1Reference = spawnedObj.GetComponent<Player>();
+        }
+        else
+        {
+            player2Reference = spawnedObj.GetComponent<Player>();
+        }
     }
     
     public bool IsGameOver()
@@ -66,5 +80,11 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.Log("Game Over");
         }
+    }
+
+    public Player GetPlayer(int playerNumber)
+    {
+        //return player reference
+        return playerNumber == 1 ? player1Reference : player2Reference;
     }
 }

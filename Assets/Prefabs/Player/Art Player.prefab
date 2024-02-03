@@ -302,10 +302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734a4f17cb734af2bb378f700d745dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   playerThrowTsf: {fileID: 5999924820398793030}
   pickRange: 0.7
   invincibleTime: 0.2
-  attackCooldown: 0
+  attackCooldown: 0.3
   stackedDamage: 0
   isInvincible: 0
   currentItem: {fileID: 0}

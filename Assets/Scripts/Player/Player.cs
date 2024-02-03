@@ -25,9 +25,9 @@ public abstract class Player : MonoBehaviour
     
     public float UltimateGauge { get; protected set; }
     
-    public float GetStackedDamage()
+    public int GetStackedDamage()
     {
-        return stackedDamage;
+        return (int)(stackedDamage);
     }
     
     private void Awake()

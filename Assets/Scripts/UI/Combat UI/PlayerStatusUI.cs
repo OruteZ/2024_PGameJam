@@ -10,11 +10,22 @@ public class PlayerStatusUI : MonoBehaviour
     [SerializeField] private Player playerReference;
     [SerializeField] private Image[] lifeImages;
     [SerializeField] private TMP_Text damageText;
-    [SerializeField] private Slider ultimateGauge;
+    [SerializeField] private Scrollbar ultimateGauge;
+
+    public int playerNumber;
+    
+    public void Start() {
+        //from gameManager, get player reference
+        playerReference = null;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        // if player reference is null, return
+        playerReference ??= GameManager.Instance.GetPlayer(playerNumber);
+        if (playerReference is null) return;
+        
         // Update the UI elements with the player's current status
         UpdateLifeImages();
         UpdateDamageText();
@@ -23,17 +34,21 @@ public class PlayerStatusUI : MonoBehaviour
 
     private void UpdateLifeImages()
     {
+        int life = playerNumber == 1 ? GameManager.Instance.player1Life : GameManager.Instance.player2Life;
+        
         // Assuming player's life is an integer between 0 and 3
         for (int i = 0; i < lifeImages.Length; i++)
         {
-            // lifeImages[i].enabled = i < playerReference.Life;
+            lifeImages[i].enabled = i < life;
         }
     }
 
     private void UpdateDamageText()
     {
+        int damage = playerReference.GetStackedDamage();
+
         // Assuming player's damage is a float
-        damageText.text = playerReference.GetStackedDamage().ToString();
+        damageText.text = damage + "%";
     }
 
     private void UpdateUltimateGauge()

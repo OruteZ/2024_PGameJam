@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameStartTrigger : MonoBehaviour
 {
-    public void Start()
+    public void Awake()
     {
         GameManager.Instance.GameStart();
     }
