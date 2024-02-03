@@ -28,11 +28,15 @@ public class MenuButtonAnimator : MonoBehaviour, IPointerEnterHandler, IPointerE
         {
             lightObj.SetActive(true);
             textObj.SetActive(true);
+
+            centerObj.GetComponent<SpriteRenderer>().material.SetFloat("_isOutline", 1f);
         }
         else
         {
             lightObj.SetActive(false);
             textObj.SetActive(false);
+
+            centerObj.GetComponent<SpriteRenderer>().material.SetFloat("_isOutline", 0f);
         }
     }
 

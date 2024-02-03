@@ -51,7 +51,58 @@ MonoBehaviour:
   lastOffset:
     camSizeOffset: 6.75
     camPosOffset: {x: 0, y: 2.44, z: -20}
-  delayTime: 180
+  delayTime: 15
+  lerpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.09072251
+      outSlope: 0.09072251
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5553415
+      value: 0.050381973
+      inSlope: 0.40154594
+      outSlope: 0.40154594
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12256018
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.79661554
+      value: 0.86920834
+      inSlope: 7.572842
+      outSlope: 7.572842
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.038290735
+    - serializedVersion: 3
+      time: 0.84535706
+      value: 0.99651223
+      inSlope: 0.03089819
+      outSlope: 0.03089819
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.15768187
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.02255367
+      outSlope: 0.02255367
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5207466902324422927
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,6 +116,7 @@ GameObject:
   - component: {fileID: 5207466902324422926}
   - component: {fileID: 5207466902324422914}
   - component: {fileID: 5207466902324422915}
+  - component: {fileID: 1460608249}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -246,3 +298,20 @@ MonoBehaviour:
   defaultShakePower: 0.5
   defaultShakeDuration: 0.5
   powerMultiplier: 1
+--- !u!114 &1460608249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207466902324422927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 452eb79da8f1c7646bc520d8a7169c2e, type: 2}

@@ -14,9 +14,6 @@
         },
         {
             "m_Id": "5386cf842d3741e2b9d92dcc198ae874"
-        },
-        {
-            "m_Id": "57c99af211e84bbd84c01fa00acddda2"
         }
     ],
     "m_Keywords": [],
@@ -1510,35 +1507,6 @@
 }
 
 {
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "57c99af211e84bbd84c01fa00acddda2",
-    "m_Guid": {
-        "m_GuidSerialized": "5eddbd56-4a23-48a0-8a7e-6593a2224c09"
-    },
-    "m_Name": "CenterColor",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "CenterColor",
-    "m_DefaultReferenceName": "_CenterColor",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 0.9913124442100525,
-        "g": 0.5424528121948242,
-        "b": 1.0,
-        "a": 0.0
-    },
-    "isMainColor": false,
-    "m_ColorMode": 0
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "58ca2010785c46ef9d79949643d54501",
@@ -2284,9 +2252,6 @@
         },
         {
             "m_Id": "5386cf842d3741e2b9d92dcc198ae874"
-        },
-        {
-            "m_Id": "57c99af211e84bbd84c01fa00acddda2"
         }
     ]
 }

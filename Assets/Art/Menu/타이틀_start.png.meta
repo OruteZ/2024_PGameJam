@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 40
@@ -120,12 +120,12 @@ TextureImporter:
       name: "\uD0C0\uC774\uD2C0_start_0"
       rect:
         serializedVersion: 2
-        x: 134
-        y: 57
-        width: 41
-        height: 51
+        x: 132
+        y: 54
+        width: 46
+        height: 57
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: "\uD0C0\uC774\uD2C0_start_1"
       rect:
         serializedVersion: 2
-        x: 231
-        y: 59
-        width: 39
-        height: 44
+        x: 230
+        y: 56
+        width: 43
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: "\uD0C0\uC774\uD2C0_start_2"
       rect:
         serializedVersion: 2
-        x: 339
-        y: 59
-        width: 33
-        height: 55
+        x: 334
+        y: 56
+        width: 43
+        height: 62
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
