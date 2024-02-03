@@ -2,12 +2,13 @@
 using UnityEngine;
 using Utility.Attribute;
 using Utility.Generic;
+using Utility.Manager;
 
 [Prefab("GameManager", "Singleton")]
 public class GameManager : Singleton<GameManager>
 {
-    public int player1Life = 3;
-    public int player2Life = 3;
+    public int player1Life;
+    public int player2Life;
 
     public GameObject player1;
     public GameObject player2;
@@ -25,6 +26,15 @@ public class GameManager : Singleton<GameManager>
 
     public void GameStart()
     {
+        //set life 3
+        player1Life = 3;
+        player2Life = 3;
+        
+        //set ultimate gauge 0
+        player1UltimateGauge = 0;
+        player2UltimateGauge = 0;
+        
+        
         SpawnPlayerImmediate(1);
         SpawnPlayerImmediate(2);
     }
@@ -34,7 +44,10 @@ public class GameManager : Singleton<GameManager>
         if (playerNum == 1) player1Life--;
         else player2Life--;
 
-        if (!IsGameOver()) StartCoroutine(PlayerSpawn(playerNum, 3f));
+        if (!IsGameOver())
+        {
+            StartCoroutine(PlayerSpawn(playerNum, 3f));
+        }
     }
 
     public IEnumerator PlayerSpawn(int playerNum, float waitTime)
@@ -76,7 +89,14 @@ public class GameManager : Singleton<GameManager>
         if (deadPlayerNumber == 1) player1UltimateGauge = player1Reference.ultimateGauge;
         else player2UltimateGauge = player2Reference.ultimateGauge;
 
-        if (IsGameOver()) StartCoroutine(FinishGame());
+        SoundManager.Instance.PlaySFX("explosion");
+        CameraShaker.Instance.ShakeCamera(1f);
+        if (IsGameOver())
+        {
+            SoundManager.Instance.StopBGM();
+            StartCoroutine(FinishGame());
+            SoundManager.Instance.PlaySFX("game-over");
+        }
     }
 
     private IEnumerator FinishGame()
