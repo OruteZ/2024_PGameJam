@@ -48,6 +48,7 @@ public class DebuffMine : Mine
 
     void ApplyDebuff(Player player)
     {
+        CreateDestroyEffect();
 
         player.TakeDamage(damageAmount);
 
@@ -70,6 +71,8 @@ public class DebuffMine : Mine
     {
         if (isUnDebuff) return;
         isUnDebuff = true;
+
+        if (!phMat) return;
 
         phMat.friction /= frictionAmount;
 

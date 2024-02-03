@@ -38,6 +38,9 @@ public class TouchAndExplode : MonoBehaviour
 
         Explode();
 
+        DestroyEffectCreator effect = GetComponent<DestroyEffectCreator>();
+        if (effect) effect.CreateDestroyEffect();
+        
         Destroy(this.gameObject);
 
     }

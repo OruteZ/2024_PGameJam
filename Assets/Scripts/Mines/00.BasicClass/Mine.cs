@@ -37,4 +37,17 @@ public class Mine : MonoBehaviour
 
         return true;
     }
+
+    protected virtual void DestroyGameObj()
+    {
+        CreateDestroyEffect();
+
+        Destroy(this.gameObject);
+    }
+
+    protected virtual void CreateDestroyEffect()
+    {
+        DestroyEffectCreator effect = GetComponent<DestroyEffectCreator>();
+        if (effect) effect.CreateDestroyEffect();
+    }
 }

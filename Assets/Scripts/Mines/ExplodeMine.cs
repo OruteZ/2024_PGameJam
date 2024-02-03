@@ -35,7 +35,7 @@ public class ExplodeMine : Mine
             }
         }
 
-        Destroy(this.gameObject);
+        DestroyGameObj();
 
         return true;
     }

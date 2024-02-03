@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1087634429677778673}
   - component: {fileID: 5578787360742489484}
   - component: {fileID: 2379073244384271438}
+  - component: {fileID: -633131348165690034}
   m_Layer: 0
   m_Name: Lego_Mine
   m_TagString: Untagged
@@ -116,5 +117,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   explodeRange: 3
-  explodeForce: 10
-  explodeDamage: 10
+  explodeForce: 5
+  explodeDamage: 20
+--- !u!114 &-633131348165690034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5345361120076049999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da3a0302a5e841348a7239157367e747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 6865798784970130774, guid: ca612e16d9779aa45bb19ed5ed79adb8, type: 3}
