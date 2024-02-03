@@ -20,6 +20,10 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float attackAmount = 3f;
     bool isDelay = false;
 
+    [Header("AnimationSetting")]
+    [SerializeField] GameObject centerObj;
+    Vector3 defaultCenterScale = Vector3.one;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +33,18 @@ public class BlackHole : MonoBehaviour
         _time = 0f;
         defaultScale = transform.localScale;
         //Destroy(this.gameObject, lastingTime);//일정 시간 이후에 자동 파괴
+
+        defaultCenterScale = centerObj.transform.localScale;
+
+        StartCoroutine(centerAnim());
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.localScale = defaultScale * sizeCurve.Evaluate(_time / lastingTime);
+
+        if(centerObj) centerObj.transform.localScale = defaultCenterScale * sizeCurve.Evaluate(_time / lastingTime);
         _time += Time.deltaTime;
         if(_time >= lastingTime)//특정 시간 지나면 파괴되게 하기
         {
@@ -72,6 +82,25 @@ public class BlackHole : MonoBehaviour
         isDelay = true;
     }
     #endregion Attack Setting
+
+    IEnumerator centerAnim()
+    {
+        //WaitForSeconds wait = new WaitForSeconds(0.1f);
+        WaitForFixedUpdate wait = new WaitForFixedUpdate();
+
+        while (true)
+        {
+            yield return wait;
+
+            Vector3 pos = Vector2.zero;
+            pos.x = Random.Range(-1f, 1f);
+            pos.y = Random.Range(-1f, 1f);
+
+            pos.Normalize();
+
+            centerObj.transform.localPosition = pos * 0.1f;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
