@@ -35,6 +35,8 @@ public class GameOverUI : MonoBehaviour
         
         //if player 2 win, flip the illustration
         winnerIllustrationImage.transform.localScale = playerNum == 1 ? Vector3.one : new Vector3(-1, 1, 1);
+        
+        SoundManager.Instance.PlaySFX("WIN");
     }
     
     public void RestartGame()

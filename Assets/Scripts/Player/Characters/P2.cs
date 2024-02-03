@@ -99,7 +99,8 @@ public class P2 : Player
         //set const movement
         // playerMovement.SetConstState(true);
         inputController.canInput = false;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        playerMovement.RB.isKinematic = true;
+        playerMovement.RB.velocity = Vector2.zero;
         
         //show ultimate effect
         var ultimateEffectInstance = Instantiate(ultimateEffect, ultimateSpawnPosition.position, Quaternion.identity);

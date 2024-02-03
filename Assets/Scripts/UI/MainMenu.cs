@@ -20,6 +20,8 @@ public class MainMenu : MonoBehaviour
     {
         SceneLoadManager.Instance.LoadScene("GameScene", true);
         PlaySoundAndMove(-1);
+        
+        SoundManager.Instance.StopBGM();
     }
 
     public void Option()

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Utility.Attribute;
 using Utility.Generic;
 
+[Prefab("GameManager", "Singleton")]
 public class GameManager : Singleton<GameManager>
 {
     public int player1Life = 3;
