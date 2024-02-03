@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ItemStorage_All
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 4380711699600493954, guid: 8dac503b800105a4694e388aa7192097, type: 3}
+  - {fileID: 8169662216374421527, guid: 53f3a2e0f8443a14ba2e1214dc6f7e53, type: 3}
+  - {fileID: 4926604456756512538, guid: 497bdd7df9f94d64a84b5e4534a95c64, type: 3}
   - {fileID: 7034194623823527041, guid: c10e2c5edc2de6748ac9add838088571, type: 3}
-  - {fileID: 3979645117473841560, guid: 5c20c37a93873b241ab90e5b96f57a9b, type: 3}
-  - {fileID: 6953988932878510329, guid: 320b3e5ec5b6b904882c95b36ade5f35, type: 3}
-  - {fileID: 7705083805430328198, guid: 1dc68cdbbee0d5743a20256e4542dafe, type: 3}
-  - {fileID: 3442836180031051201, guid: 697552a3fda120343a2ffc79ff4de8f3, type: 3}
   - {fileID: 5439681917622845575, guid: b70181e2a647a404aafb80ed43d218b5, type: 3}
+  - {fileID: 7202926285214727321, guid: cec6bbbb456a10e44b405da08ed0fce8, type: 3}
+  - {fileID: 6953988932878510329, guid: 320b3e5ec5b6b904882c95b36ade5f35, type: 3}
+  - {fileID: 517361892513791586, guid: 8085b61e97f5d594388dc9d900b178ab, type: 3}

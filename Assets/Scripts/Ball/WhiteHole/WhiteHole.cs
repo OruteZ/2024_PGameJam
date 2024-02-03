@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackHole : MonoBehaviour
+public class WhiteHole : MonoBehaviour
 {
     List<Rigidbody2D> nearObj;//블랙홀의 영향을 받을 오브젝트들
 
@@ -18,26 +18,24 @@ public class BlackHole : MonoBehaviour
     [Header("Damage Setting")]
     [SerializeField] float attackDelay = 1f;
     [SerializeField] float attackAmount = 3f;
-    bool isDelay = false;
+    [SerializeField] float attackForce = 10f;
+    [SerializeField] float cameraShake = 0.2f;
+    //bool isDelay = false;
 
     [Header("AnimationSetting")]
     [SerializeField] GameObject centerObj;
-    Vector3 defaultCenterScale = Vector3.one;
 
     // Start is called before the first frame update
     void Start()
     {
         nearObj = new List<Rigidbody2D>();
-        isDelay = false;
+        //isDelay = false;
 
         _time = 0f;
         defaultScale = transform.localScale;
-        //Destroy(this.gameObject, lastingTime);//일정 시간 이후에 자동 파괴
-
-        defaultCenterScale = centerObj.transform.localScale;
 
         StartCoroutine(centerAnim());
-        StartCoroutine(CameraShake());
+        StartCoroutine(SetAttackTimer());
     }
 
     // Update is called once per frame
@@ -45,22 +43,17 @@ public class BlackHole : MonoBehaviour
     {
         transform.localScale = defaultScale * sizeCurve.Evaluate(_time / lastingTime);
 
-        //if(centerObj) centerObj.transform.localScale = defaultCenterScale * sizeCurve.Evaluate(_time / lastingTime);
         _time += Time.deltaTime;
-        if(_time >= lastingTime)//특정 시간 지나면 파괴되게 하기
+        if (_time >= lastingTime)//특정 시간 지나면 파괴되게 하기
         {
             Destroy(this.gameObject);
             return;
         }
 
-        foreach(Rigidbody2D obj in nearObj)
+        foreach (Rigidbody2D obj in nearObj)//계속 약간의 힘 부여
         {
-            if (obj.CompareTag("Player"))
-            {
-                GiveDamage(obj.GetComponent<Player>());
-            }
 
-            obj.AddForce(-(obj.position - (Vector2)transform.position).normalized * forceAmount);
+            obj.AddForce((obj.position - (Vector2)transform.position).normalized * forceAmount);
 
         }
     }
@@ -68,19 +61,38 @@ public class BlackHole : MonoBehaviour
     #region Attack Setting
     void GiveDamage(Player player)
     {
-        if (isDelay) return;
-        StartCoroutine("SetAttackTimer");//DPS 공격이 아닌 정해진 시간마다 한번씩 데미지 부여
+        //if (isDelay) return;
+        //StartCoroutine("SetAttackTimer");//DPS 공격이 아닌 정해진 시간마다 한번씩 데미지 부여
 
         player.TakeDamage(attackAmount);
     }
 
-    IEnumerator SetAttackTimer()
+    IEnumerator SetAttackTimer()//여기서 추가로 데미지 부여
     {
-        isDelay = false;
+        //isDelay = false;
 
-        yield return new WaitForSeconds(attackDelay);
+        WaitForSeconds wait = new WaitForSeconds(attackDelay);
 
-        isDelay = true;
+        while (true)
+        {
+            yield return wait;
+
+            foreach (Rigidbody2D obj in nearObj)
+            {
+                
+                if (obj.CompareTag("Player"))
+                {
+                    GiveDamage(obj.GetComponent<Player>());
+                }
+
+                obj.AddForce((obj.position - (Vector2)transform.position).normalized * attackForce,ForceMode2D.Impulse);
+
+            }
+
+            if (CameraShaker.Instance) CameraShaker.Instance.ShakeCamera(cameraShake * transform.localScale.x / defaultScale.x);
+        }
+
+        //isDelay = true;
     }
     #endregion Attack Setting
 
@@ -100,18 +112,6 @@ public class BlackHole : MonoBehaviour
             pos.Normalize();
 
             centerObj.transform.localPosition = pos * 0.1f;
-        }
-    }
-
-    IEnumerator CameraShake()
-    {
-        WaitForSeconds wait = new WaitForSeconds(0.5f);
-
-        while (true)
-        {
-            yield return wait;
-
-            if (CameraShaker.Instance) CameraShaker.Instance.ShakeCamera(0.1f);
         }
     }
 
