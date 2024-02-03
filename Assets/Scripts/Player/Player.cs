@@ -47,6 +47,8 @@ public abstract class Player : MonoBehaviour
         if(isInvincible > 0) return;
         
         stackedDamage += damage;
+
+        UltimateGauge += damage * 0.2f;
         playerMovement.Knockback(knockbackDir, knockbackPower * (1 + stackedDamage * 0.01f));
         playerAnimation.GetHit(knockbackPower >= 10 ? 0.5f : 0.1f, knockbackPower);
         
