@@ -22,6 +22,8 @@ public class GameManager : Singleton<GameManager>
     
     public float player1UltimateGauge;
     public float player2UltimateGauge;
+    
+    public GameObject gameOverUI;
 
     public void GameStart()
     {
@@ -124,13 +126,21 @@ public class GameManager : Singleton<GameManager>
         
         if (IsGameOver())
         {
-            FinishGame();
+            StartCoroutine(FinishGame());
         }
     }
 
-    private void FinishGame()
+    private IEnumerator FinishGame()
     {
+        Time.timeScale = 0.3f;
+
+        yield return new WaitForSecondsRealtime(3);
+
+        Time.timeScale = 1f;
         
+        //todo : show game over ui
+        gameOverUI.SetActive(true);
+        // gameOverUI.GetComp
     }
 
     public Player GetPlayer(int playerNumber)
