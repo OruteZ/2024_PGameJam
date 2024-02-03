@@ -100,6 +100,10 @@ public abstract class Player : MonoBehaviour
 
     public void Update()
     {
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0)) ultimateGauge = 1f;
+#endif
+
         if (inputController.GetKeyDown("Pick")) Pick();
         if (inputController.GetKeyDown("Attack") && currentItem == null) Attack();
         if (inputController.GetKeyDown("Attack") && currentItem != null) Use();

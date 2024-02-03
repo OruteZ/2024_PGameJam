@@ -20,6 +20,8 @@ public class P2 : Player
     public float ultimateDamage;
     public float ultimateKnockbackPower;
     public GameObject ultimateEffect;
+    public AnimationCurve lazerAnimCurve;
+    public ParticleSystem lazerParticle;
 
     private Vector2 direction => playerMovement.IsFacingRight ? new Vector2(1, 1) : new Vector2(-1, 1);
     
@@ -101,12 +103,23 @@ public class P2 : Player
         
         //show ultimate effect
         var ultimateEffectInstance = Instantiate(ultimateEffect, ultimateSpawnPosition.position, Quaternion.identity);
-        
-        
+
+        ultimateEffectInstance.transform.localScale = ultimateSpawnRect.size;
+
+        Vector2 lazerSize = ultimateSpawnRect.size;
+
+        lazerParticle.Play();
+
+        StartCoroutine(UltimateCameraShaker(ultimateDuration));
+
         float timer = 0;
         //while ultimate duration
         while (timer < ultimateDuration)
         {
+            //레이져 크기 애니메이션 업데이트
+            lazerSize.y = ultimateSpawnRect.size.y * lazerAnimCurve.Evaluate(timer / ultimateDuration);
+            ultimateEffectInstance.transform.localScale = lazerSize;
+
             timer += Time.deltaTime;
             yield return null;
             //if last 0.5second, knockbackPower *= 10
@@ -123,10 +136,11 @@ public class P2 : Player
                 player.TakeDamage(ultimateDamage, direction, knockbackPower);
             }
             
-            yield return null;
+            //yield return null;
         }
-        
-        
+        lazerParticle.Stop();
+
+
         GetComponent<Rigidbody2D>().isKinematic = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         
@@ -135,5 +149,18 @@ public class P2 : Player
         
         // playerMovement.SetConstState(false);
         inputController.canInput = true;
+    }
+
+    IEnumerator UltimateCameraShaker(float dur)
+    {
+        float delay = 0.5f;
+
+        WaitForSeconds wait = new WaitForSeconds(delay);
+        for(int i=0;i<dur/ delay; i++)
+        {
+            if (CameraShaker.Instance) CameraShaker.Instance.ShakeCamera(0.3f);
+
+            yield return wait;
+        }
     }
 }

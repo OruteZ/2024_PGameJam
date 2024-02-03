@@ -232,11 +232,11 @@ MonoBehaviour:
   skillDamage: 10
   skillKnockbackDir: {x: 1, y: 1}
   skillKnockbackPower: 10
-  ultimateDuration: 10
+  ultimateDuration: 5
   ultimateShooter: {fileID: 7071599283365836301, guid: 7a9433c88d26b4f459a63e4a1ad82e0d, type: 3}
-  ultimateSpawnPosition: {x: -10, y: 5, z: -1}
+  ultimateSpawnPosition: {x: -14, y: 8.5, z: -1}
   spawnOffset: 0.5
-  ultimateDronesCount: 30
+  ultimateDronesCount: 10
 --- !u!61 &5999924820671688970
 BoxCollider2D:
   m_ObjectHideFlags: 0
