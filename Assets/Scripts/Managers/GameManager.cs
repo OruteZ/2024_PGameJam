@@ -74,12 +74,12 @@ public class GameManager : Singleton<GameManager>
         if (playerNum == 1)
         {
             player1Reference = spawnedObj.GetComponent<Player>();
-            player1Reference.UltimateGauge = player1UltimateGauge;
+            player1Reference.ultimateGauge = player1UltimateGauge;
         }
         else
         {
             player2Reference = spawnedObj.GetComponent<Player>();
-            player2Reference.UltimateGauge = player2UltimateGauge;
+            player2Reference.ultimateGauge = player2UltimateGauge;
         }
     }
     
@@ -100,12 +100,12 @@ public class GameManager : Singleton<GameManager>
         if (playerNum == 1)
         {
             player1Reference = spawnedObj.GetComponent<Player>();
-            player1Reference.UltimateGauge = player1UltimateGauge;
+            player1Reference.ultimateGauge = player1UltimateGauge;
         }
         else
         {
             player2Reference = spawnedObj.GetComponent<Player>();
-            player2Reference.UltimateGauge = player2UltimateGauge;
+            player2Reference.ultimateGauge = player2UltimateGauge;
         }
     }
     
@@ -121,11 +121,11 @@ public class GameManager : Singleton<GameManager>
         //save ultimate gauge
         if (deadPlayerNumber == 1)
         {
-            player1UltimateGauge = player1Reference.UltimateGauge;
+            player1UltimateGauge = player1Reference.ultimateGauge;
         }
         else
         {
-            player2UltimateGauge = player2Reference.UltimateGauge;
+            player2UltimateGauge = player2Reference.ultimateGauge;
         }
         
         if (IsGameOver())

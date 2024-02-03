@@ -61,9 +61,9 @@ public class PlayerStatusUI : MonoBehaviour
     private void UpdateUltimateGauge()
     {
         // Assuming player's ultimate gauge is a float between 0 and 1
-        ultimateGauge.value = playerReference.UltimateGauge;
+        ultimateGauge.value = playerReference.ultimateGauge;
         
         // Change the color of the ultimate gauge to rainbow if the gauge is full
-        fill.sprite = playerReference.UltimateGauge >= 1 ? rainbow : white;
+        fill.sprite = playerReference.ultimateGauge >= 1 ? rainbow : white;
     }
 }

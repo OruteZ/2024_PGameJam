@@ -22,8 +22,8 @@ public abstract class Player : MonoBehaviour
     [SerializeField] public InputController inputController;
     [SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected AnimationAdaptor playerAnimation;
-    
-    public float UltimateGauge { get; set; }
+
+    public float ultimateGauge;
     
     public int GetStackedDamage()
     {
@@ -48,7 +48,7 @@ public abstract class Player : MonoBehaviour
         
         stackedDamage += damage;
 
-        UltimateGauge += damage * 0.2f * 0.01f;
+        ultimateGauge += damage * 0.2f * 0.01f;
         playerMovement.Knockback(knockbackDir, knockbackPower * (1 + stackedDamage * 0.01f));
         playerAnimation.GetHit(knockbackPower >= 10 ? 0.5f : 0.1f, knockbackPower);
         
@@ -100,10 +100,10 @@ public abstract class Player : MonoBehaviour
         if (inputController.GetKeyDown("Attack") && currentItem == null) Attack();
         if (inputController.GetKeyDown("Attack") && currentItem != null) Use();
         if (inputController.GetKeyDown("Skill")) Skill();
-        if (inputController.GetKeyDown("Ultimate") && UltimateGauge >= 1f)
+        if (inputController.GetKeyDown("Ultimate") && ultimateGauge >= 1f)
         {
             Ultimate();
-            UltimateGauge = 0;
+            ultimateGauge = 0;
         }
     }
 
