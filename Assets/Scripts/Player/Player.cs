@@ -50,6 +50,9 @@ public abstract class Player : MonoBehaviour
 
     private void Pick()
     {
+        //if there is no item, pick item
+        if (currentItem != null) return;
+        
         var colliders = Physics2D.OverlapCircleAll(playerThrowTsf.position, pickRange);
         foreach (var collider in colliders)
         {
