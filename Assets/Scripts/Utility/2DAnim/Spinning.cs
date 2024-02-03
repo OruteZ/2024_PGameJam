@@ -9,6 +9,6 @@ public class Spinning : MonoBehaviour
     private void Update()
     {
         //spin 2D object
-        transform.Rotate(0, 0, -speed * Time.deltaTime * 360f);
+        transform.Rotate(0, -speed * Time.deltaTime * 360f, 0);
     }
 }

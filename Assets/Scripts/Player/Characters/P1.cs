@@ -63,7 +63,7 @@ public class P1 : Player
                 var enemy = collider.GetComponent<Player>();
                 if (enemy != null && enemy != this && !attackedPlayers.Contains(enemy))
                 {
-                    UltimateGauge += 0.1f * attackDamage;
+                    UltimateGauge += 0.1f * attackDamage * 0.01f;
                     
                     enemy.TakeDamage(attackDamage, attackKnockbackDir * direction, attackKnockbackPower);
                     attackedPlayers.Add(enemy);

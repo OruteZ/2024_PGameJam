@@ -10,9 +10,18 @@ public class PlayerStatusUI : MonoBehaviour
     [SerializeField] private Player playerReference;
     [SerializeField] private Image[] lifeImages;
     [SerializeField] private TMP_Text damageText;
-    [SerializeField] private Scrollbar ultimateGauge;
+    
+    [SerializeField] private Slider ultimateGauge;
+    [SerializeField] private Image fill;
+    [SerializeField] private Sprite rainbow;
+    [SerializeField] private Sprite white;
 
     public int playerNumber;
+
+    private void Awake()
+    {
+        fill = ultimateGauge.fillRect.GetComponent<Image>();
+    }
     
     public void Start() {
         //from gameManager, get player reference
@@ -23,7 +32,7 @@ public class PlayerStatusUI : MonoBehaviour
     void Update()
     {
         // if player reference is null, return
-        playerReference ??= GameManager.Instance.GetPlayer(playerNumber);
+        playerReference = GameManager.Instance.GetPlayer(playerNumber);
         if (playerReference is null) return;
         
         // Update the UI elements with the player's current status
@@ -46,8 +55,6 @@ public class PlayerStatusUI : MonoBehaviour
     private void UpdateDamageText()
     {
         int damage = playerReference.GetStackedDamage();
-
-        // Assuming player's damage is a float
         damageText.text = damage + "%";
     }
 
@@ -55,5 +62,8 @@ public class PlayerStatusUI : MonoBehaviour
     {
         // Assuming player's ultimate gauge is a float between 0 and 1
         ultimateGauge.value = playerReference.UltimateGauge;
+        
+        // Change the color of the ultimate gauge to rainbow if the gauge is full
+        fill.sprite = playerReference.UltimateGauge >= 1 ? rainbow : white;
     }
 }

@@ -17,6 +17,11 @@ namespace Utility.Manager
         
         // ReSharper disable once InconsistentNaming
         public float progress { get; private set; }
+        
+        private void Start()
+        {
+            progress = -1;
+        }
 
         public LoadingScreen loadingScreen; // Loading 화면을 참조하는 GameObject
 
@@ -54,6 +59,9 @@ namespace Utility.Manager
                 progress = asyncOperation.progress;
                 yield return null;
             }
+
+            float delaySeconds = 4;
+            yield return new WaitForSeconds(delaySeconds);
             
             yield return loadingScreen.FadeOut();
 
@@ -65,6 +73,8 @@ namespace Utility.Manager
             {
                 Debug.Log("Loading screen is null.");
             }
+
+            progress = -1;
             onLoadEnd.Invoke();
         }
     }

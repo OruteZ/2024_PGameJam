@@ -21,7 +21,7 @@ public class MineSkill : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             var player = other.GetComponent<Player>();
-            if (player != _player)
+            if (player is P1)
             {
                 //calculate knockback direction
                 bool isRight = transform.position.x < player.transform.position.x;

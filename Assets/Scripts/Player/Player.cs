@@ -19,11 +19,11 @@ public abstract class Player : MonoBehaviour
     [SerializeField] private int isInvincible;
     [SerializeField] protected ItemObj currentItem;
     
-    [SerializeField] protected InputController inputController;
+    [SerializeField] public InputController inputController;
     [SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected AnimationAdaptor playerAnimation;
     
-    public float UltimateGauge { get; protected set; }
+    public float UltimateGauge { get; set; }
     
     public int GetStackedDamage()
     {
@@ -48,7 +48,7 @@ public abstract class Player : MonoBehaviour
         
         stackedDamage += damage;
 
-        UltimateGauge += damage * 0.2f;
+        UltimateGauge += damage * 0.2f * 0.01f;
         playerMovement.Knockback(knockbackDir, knockbackPower * (1 + stackedDamage * 0.01f));
         playerAnimation.GetHit(knockbackPower >= 10 ? 0.5f : 0.1f, knockbackPower);
         
