@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e6a17d1f121aeab47b1f13a032d5610d
+guid: 68ff259b3b3ae8e449bb0167c6c9bd07
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,70 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: BackGround 1_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1333.3333
-        width: 1000
-        height: 666.6667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8012610edb972f246903b8428790ae74
-      internalID: 2041294819
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BackGround 1_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 667.3333
-        width: 1000
-        height: 666.6667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc4b0f8d7f4bfc743a27510c31fc326e
-      internalID: 1479973512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BackGround 1_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1.333313
-        width: 1000
-        height: 666.6667
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08d5ad03d70628c48a432aa8e0fd164d
-      internalID: 6129587
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -189,10 +126,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      BackGround 1_0: 2041294819
-      BackGround 1_1: 1479973512
-      BackGround 1_2: 6129587
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
