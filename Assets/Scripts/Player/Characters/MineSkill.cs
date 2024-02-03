@@ -7,6 +7,7 @@ public class MineSkill : MonoBehaviour
 
     [SerializeField] private float damage;
     [SerializeField] private float knockbackPower;
+    [SerializeField] private GameObject explosionEffect;
     
     public void SetPlayer(Player player)
     {
@@ -27,6 +28,7 @@ public class MineSkill : MonoBehaviour
                 bool isRight = transform.position.x < player.transform.position.x;
                 
                 player.TakeDamage(damage, new Vector2( isRight ? 1 : -1 , 2), knockbackPower);
+                Instantiate(explosionEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

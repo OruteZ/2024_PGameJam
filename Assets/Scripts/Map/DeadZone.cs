@@ -10,7 +10,7 @@ public class DeadZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager.Instance.Dead(other.GetComponent<Player>().playerNumber);
-            Destroy(other.gameObject);
         }
+        Destroy(other.gameObject);
     }
 }
