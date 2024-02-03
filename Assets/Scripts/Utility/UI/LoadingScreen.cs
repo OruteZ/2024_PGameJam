@@ -13,6 +13,7 @@ namespace Utility.UI
         public Image programmingImage;
         public Image artImage;
         public Image loadingImage;
+        public Image vsImage;
 
         public Vector2 inCline = new Vector2(20, 23);
 
@@ -37,11 +38,14 @@ namespace Utility.UI
             }
             
             loadingImage.gameObject.SetActive(true);
+            //vs image too 
+            vsImage.gameObject.SetActive(true);
         }
         
         public IEnumerator FadeOut()
         {
             loadingImage.gameObject.SetActive(false);
+            vsImage.gameObject.SetActive(false);
             //art image goes to left down (depends on inCline)
             //programming image goes to right up
             float time = 0;

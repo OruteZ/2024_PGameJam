@@ -1,6 +1,7 @@
 ﻿
 using System.Collections;
 using UnityEngine;
+using Utility;
 using Utility.Attribute;
 using Utility.Generic;
 
@@ -42,6 +43,8 @@ public class GameManager : Singleton<GameManager>
         {
             player2Life--;
         }
+        
+        CameraShaker.Instance.ShakeCamera(1, Vector2Extensions.Random());
         
         if (IsGameOver() == false)
         {
@@ -121,8 +124,13 @@ public class GameManager : Singleton<GameManager>
         
         if (IsGameOver())
         {
-            Debug.Log("Game Over");
+            FinishGame();
         }
+    }
+
+    private void FinishGame()
+    {
+        
     }
 
     public Player GetPlayer(int playerNumber)
