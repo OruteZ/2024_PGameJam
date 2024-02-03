@@ -23,12 +23,16 @@ public class GameManager : Singleton<GameManager>
     public float player1UltimateGauge;
     public float player2UltimateGauge;
     
-    public GameObject gameOverUI;
+    public GameOverUI gameOverUI;
 
     public void GameStart()
     {
         player1Life = 3;
         player2Life = 3;
+        
+        //ultimate gauge set 0
+        player1UltimateGauge = 0;
+        player2UltimateGauge = 0;
         
         //spawn immediately
         SpawnPlayerImmediate(1);
@@ -139,8 +143,8 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1f;
         
         //todo : show game over ui
-        gameOverUI.SetActive(true);
-        // gameOverUI.GetComp
+        gameOverUI.gameObject.SetActive(true);
+        gameOverUI.SetWinner(player1Life > 0 ? 1 : 2);
     }
 
     public Player GetPlayer(int playerNumber)

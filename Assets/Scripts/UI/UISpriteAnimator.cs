@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class UISpriteAnimator : MonoBehaviour
 {
-    [SerializeField] private List<Sprite> sprites;
+    public List<Sprite> sprites;
     
     private Image _image;
     private int _currentIndex;
@@ -24,6 +24,8 @@ public class UISpriteAnimator : MonoBehaviour
         _timeSinceLastFrame += Time.deltaTime;
         if (_timeSinceLastFrame >= frameRate)
         {
+            if(sprites.Count == 0) return;
+            
             _timeSinceLastFrame = 0;
             _currentIndex = (_currentIndex + 1) % sprites.Count;
             _image.sprite = sprites[_currentIndex];
