@@ -7,7 +7,8 @@ using Utility.ScriptableObject;
 public abstract class Player : MonoBehaviour
 {
     public int playerNumber;
-    
+
+    [SerializeField] SpriteRenderer itemDescribeRenderer;
     [SerializeField] protected Transform playerThrowTsf;
     [SerializeField] protected float pickRange;
     
@@ -44,6 +45,8 @@ public abstract class Player : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerAnimation = GetComponent<AnimationAdaptor>();
+
+        if (itemDescribeRenderer) itemDescribeRenderer.sprite = null;
     }
 
     public void Heal(float healAmount)
@@ -101,7 +104,9 @@ public abstract class Player : MonoBehaviour
             if (item == null) continue;
 
             currentItem = item;
-            item.PickItem(this);
+            if(item.PickItem(this) ==ItemType.Equip)
+                if (itemDescribeRenderer) itemDescribeRenderer.sprite = item.MainSprite;
+
             SoundManager.Instance.PlaySFX("itemPickup");
             break;
         }
@@ -112,8 +117,12 @@ public abstract class Player : MonoBehaviour
         if (currentItem == null) return;
         currentItem.TryUse(this, out bool isDestroyed);
         ultimateGauge += 0.02f;
-        
-        if (isDestroyed) currentItem = null;
+
+        if (isDestroyed)
+        {
+            if (itemDescribeRenderer) itemDescribeRenderer.sprite = null;
+            currentItem = null;
+        }
     }
 
     public void SudoUnEquip()
