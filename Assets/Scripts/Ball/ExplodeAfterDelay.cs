@@ -11,19 +11,33 @@ public class ExplodeAfterDelay : MonoBehaviour
     [SerializeField, Space(5f)] float explodePower = 10f;
 
     [SerializeField, Space(5f)] float explodeDelay = 5f;
-
+    [SerializeField, Space(5f)] AnimationCurve effectCurve;
+    float _time = 0f;
+    SpriteRenderer renderer;
+    
     bool isDestroyed = false;
 
     ContactFilter2D filter;
 
     void Start()
     {
+        float _time = 0f;
+
         isDestroyed = false;
 
         filter = new ContactFilter2D();
         //filter.SetLayerMask()
 
+        renderer = GetComponent<SpriteRenderer>();
+
         StartCoroutine("ExplodeDelay");
+    }
+
+    private void Update()
+    {
+        renderer.material.SetFloat("_HitValue", effectCurve.Evaluate(_time / explodeDelay));
+
+        _time += Time.deltaTime;
     }
 
     IEnumerator ExplodeDelay()//일정시간 기다린 후에 폭발
@@ -50,6 +64,9 @@ public class ExplodeAfterDelay : MonoBehaviour
             }
 
         }
+
+        DestroyEffectCreator effect = GetComponent<DestroyEffectCreator>();
+        if (effect) effect.CreateDestroyEffect();
 
         Destroy(this.gameObject);//이후 제거
 

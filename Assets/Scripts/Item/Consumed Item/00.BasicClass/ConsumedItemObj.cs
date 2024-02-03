@@ -29,4 +29,12 @@ public class ConsumedItemObj : ItemObj
     {
 
     }
+
+    protected void DestroyGameObj()
+    {
+        DestroyEffectCreator effect = GetComponent<DestroyEffectCreator>();
+        if (effect) effect.CreateDestroyEffect();
+
+        Destroy(this.gameObject);
+    }
 }

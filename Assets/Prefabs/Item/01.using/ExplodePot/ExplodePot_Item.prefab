@@ -102,7 +102,7 @@ MonoBehaviour:
   usingPlayer: {fileID: 0}
   isChangingToSameSprite: 1
   throwingObj: {fileID: 6546533033821614816, guid: 75f2269d57b71864bb9da689e0e01fd3, type: 3}
-  throwForceAmount: 30
+  throwForceAmount: 20
 --- !u!50 &6227281587660344408
 Rigidbody2D:
   serializedVersion: 4
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!60 &8810062370056098157
 PolygonCollider2D:
