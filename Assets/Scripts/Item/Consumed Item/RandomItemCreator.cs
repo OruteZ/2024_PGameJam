@@ -17,6 +17,8 @@ public class RandomItemCreator : ConsumedItemObj
 
         obj.GetComponent<Rigidbody2D>().AddForce(Vector2.up * forceAmount, ForceMode2D.Impulse);
 
-        Destroy(this.gameObject);
+
+        DestroyGameObj();
+        //Destroy(this.gameObject);
     }
 }

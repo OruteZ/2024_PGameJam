@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyEffect: {fileID: 6865798784970130774, guid: ca612e16d9779aa45bb19ed5ed79adb8, type: 3}
+  cameraShakeAmount: 0.3
 --- !u!212 &3844602175328299760
 SpriteRenderer:
   m_ObjectHideFlags: 0

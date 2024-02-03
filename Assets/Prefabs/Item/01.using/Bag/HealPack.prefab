@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8153866361118269088}
   - component: {fileID: 8153866361118269089}
   - component: {fileID: 7705083805430328198}
+  - component: {fileID: 1089602739474985535}
+  - component: {fileID: 4196980504649465919}
   - component: {fileID: 8153866361118269090}
-  - component: {fileID: 8342299441395090624}
+  - component: {fileID: 256940375234961626}
   m_Layer: 0
   m_Name: HealPack
   m_TagString: Untagged
@@ -76,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.33490568, b: 0.33490568, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4e7ddab73ec7b374fb92913a27f93c86, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,6 +103,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usingPlayer: {fileID: 0}
   healAmount: 20
+--- !u!114 &1089602739474985535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153866361118269092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0f80c1bd2daed4594f14b539fabfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: a45e90efcb62c9645b1674262edcca4a, type: 3}
+  - {fileID: 21300000, guid: 4e7ddab73ec7b374fb92913a27f93c86, type: 3}
+--- !u!114 &4196980504649465919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153866361118269092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da3a0302a5e841348a7239157367e747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 6865798784970130774, guid: ca612e16d9779aa45bb19ed5ed79adb8, type: 3}
+  cameraShakeAmount: 0.1
 --- !u!50 &8153866361118269090
 Rigidbody2D:
   serializedVersion: 4
@@ -122,8 +153,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &8342299441395090624
-CircleCollider2D:
+--- !u!60 &256940375234961626
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -136,5 +167,20 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.35, y: 0.85}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.08384657, y: 0.4268037}
+      - {x: -0.062253475, y: 0.425}
+      - {x: -0.1766961, y: 0.32979333}
+      - {x: -0.175, y: -0.425}
+      - {x: 0.175, y: -0.425}
+      - {x: 0.175, y: 0.32833654}

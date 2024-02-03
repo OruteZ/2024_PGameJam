@@ -13,6 +13,6 @@ public class HealPack : ConsumedItemObj
         usingPlayer.Heal(healAmount);
         //플레이어에게 힐은 준다
 
-        Destroy(this.gameObject);
+        DestroyGameObj();
     }
 }
