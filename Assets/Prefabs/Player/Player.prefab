@@ -221,16 +221,17 @@ MonoBehaviour:
   inputController: {fileID: 11400000, guid: 898642dbdddf08b479ef220e607daca2, type: 2}
   playerMovement: {fileID: 5999924820671688972}
   playerAnimation: {fileID: 5999924820671688968}
+  ultimateGauge: 0
   attackRange: 0.5
   attackTsf: {fileID: 5999924819630953318}
   attackDamage: 1
-  attackKnockbackDir: {x: 1, y: 0}
-  attackKnockbackPower: 1
+  attackKnockbackDir: {x: 1, y: 1}
+  attackKnockbackPower: 3
   skillRange: 3
   skillDuration: 0.2
   skillDamage: 10
   skillKnockbackDir: {x: 1, y: 1}
-  skillKnockbackPower: 5
+  skillKnockbackPower: 10
   ultimateDuration: 10
   ultimateShooter: {fileID: 7071599283365836301, guid: 7a9433c88d26b4f459a63e4a1ad82e0d, type: 3}
   ultimateSpawnPosition: {x: -10, y: 5, z: -1}
