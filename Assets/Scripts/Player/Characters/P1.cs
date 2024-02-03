@@ -59,6 +59,7 @@ public class P1 : Player
             Collider2D[] colliders = Physics2D.OverlapCircleAll(attackTsf.position, attackRange);
             foreach (var collider in colliders)
             {
+                Debug.Log(collider.name);
                 var enemy = collider.GetComponent<Player>();
                 if (enemy != null && enemy != this && !attackedPlayers.Contains(enemy))
                 {
