@@ -13,6 +13,8 @@ public class DebuffMine : Mine
 
     PhysicsMaterial2D phMat;
 
+    bool isUnDebuff = false;
+
     //bool isUsed = false;
 
     /*
@@ -30,7 +32,7 @@ public class DebuffMine : Mine
     protected override void Init()
     {
         base.Init();
-        
+        isUnDebuff = false;
     }
 
     protected override bool ExcuteMine(Player player)
@@ -54,6 +56,8 @@ public class DebuffMine : Mine
 
         phMat.friction *= frictionAmount;
 
+        player.GetComponent<Rigidbody2D>().AddForce(player.GetFacing() * 10f,ForceMode2D.Impulse);
+
         GetComponent<SpriteRenderer>().enabled = false;//스프라이트 끄기
         GetComponent<Collider2D>().enabled = false;
 
@@ -64,10 +68,17 @@ public class DebuffMine : Mine
 
     void UnApplyDebuff()
     {
-        phMat.friction /= frictionAmount;
+        if (isUnDebuff) return;
+        isUnDebuff = true;
 
+        phMat.friction /= frictionAmount;
 
         Debug.Log("버프 해제됨");
         Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()//에디터에서 피직스 메테리얼 값 유지하기 위해 이 함수 적용
+    {
+        UnApplyDebuff();
     }
 }
