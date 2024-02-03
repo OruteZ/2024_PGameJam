@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +20,8 @@ public class Drone : MonoBehaviour
     private Vector3 _startPosition;
     private Vector3 _shootPosition;
     private Vector3 _targetPosition;
+
+    [SerializeField] AnimationCurve lazerCurve;
 
     public void SetShootPosition()
     {
@@ -50,11 +52,34 @@ public class Drone : MonoBehaviour
         lazer.SetActive(true);
         CameraShaker.Instance.ShakeCamera(1, Vector2.right);
         //wait for 0.5 seconds
-        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(LazerCoroutine());
         lazer.SetActive(false);
         
         //move to shoot position
         StartCoroutine(OutMoveCoroutine(_shootPosition, _targetPosition));
+    }
+
+    IEnumerator LazerCoroutine()
+    {
+        float delayTime = 2f;
+
+        float _time = 0f;
+
+        Vector3 size = lazer.transform.localScale;
+        Vector3 defaultSize = size;
+
+        while (delayTime > _time)
+        {
+            size.x = defaultSize.x * lazerCurve.Evaluate(_time / delayTime);
+
+            lazer.transform.localScale = size;
+
+            _time += Time.deltaTime;
+
+            yield return null;
+        }
+
+        yield break;
     }
 
     private IEnumerator FirstMoveCoroutine(Vector3 start, Vector3 target)
