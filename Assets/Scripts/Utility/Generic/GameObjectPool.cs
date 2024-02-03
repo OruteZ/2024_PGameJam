@@ -8,8 +8,9 @@ namespace Utility.Generic
     {
         private readonly Queue<T> _pool;
         private readonly GameObject _prefab;
+        private readonly Transform _parent;
 
-        public GameObjectPool(GameObject prefab = null, int cnt = 1)
+        public GameObjectPool(GameObject prefab = null, Transform parent = null, int cnt = 1)
         {
             _pool = new Queue<T>(cnt);
 
@@ -20,6 +21,8 @@ namespace Utility.Generic
                 _prefab.AddComponent<T>();
                 _prefab.SetActive(false);
             }
+            
+            _parent = parent;
             
             CreatePool(_prefab, cnt);
         }
@@ -61,7 +64,7 @@ namespace Utility.Generic
         {
             for (var i = 0; i < cnt; i++)
             {
-                var instance = Object.Instantiate(prefab);
+                var instance = Object.Instantiate(prefab, _parent, true);
                 instance.SetActive(false);
                 
                 if(instance.TryGetComponent(out T component)) _pool.Enqueue(component);

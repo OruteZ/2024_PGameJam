@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utility.Attribute;
 using Utility.Generic;
 
 namespace Utility.Manager
 {
+    [Prefab("SoundManager", "Singleton")]
     public class SoundManager : Singleton<SoundManager>
     {
         public AudioSource backgroundMusicSource;
@@ -17,7 +19,13 @@ namespace Utility.Manager
         protected override void Awake()
         {
             base.Awake();
-            backgroundMusicSource = gameObject.AddComponent<AudioSource>();
+            
+            //try get music background source
+            if (! TryGetComponent<AudioSource>(out backgroundMusicSource))
+            {
+                backgroundMusicSource = gameObject.AddComponent<AudioSource>();
+                backgroundMusicSource.loop = true;
+            }
         }
 
         private void Start()
@@ -27,7 +35,7 @@ namespace Utility.Manager
             audioSourcePrefab.AddComponent<AudioSource>();
             audioSourcePrefab.SetActive(false);
 
-            _audioSourcePool = new GameObjectPool<AudioSource>(audioSourcePrefab, 10);
+            _audioSourcePool = new GameObjectPool<AudioSource>(audioSourcePrefab, transform, 10);
         }
 
         public void PlaySFX(string name)

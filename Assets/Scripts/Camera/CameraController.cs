@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
 
     [SerializeField, Space(5f)]
     float delayTime;
+    
+    public AnimationCurve lerpCurve;
 
     float _time = 0f;
 
@@ -35,10 +37,11 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float lerp = lerpCurve.Evaluate(_time / delayTime);
         
-        Camera.main.orthographicSize = Mathf.Lerp(firstOffset.camSizeOffset,lastOffset.camSizeOffset,_time/delayTime);
+        Camera.main.orthographicSize = Mathf.Lerp(firstOffset.camSizeOffset,lastOffset.camSizeOffset,lerp);
 
-        this.transform.position = Vector3.Lerp(firstOffset.camPosOffset, lastOffset.camPosOffset, _time / delayTime);
+        this.transform.position = Vector3.Lerp(firstOffset.camPosOffset, lastOffset.camPosOffset, lerp);
 
         _time += Time.deltaTime;
         if (_time >= delayTime) _time = delayTime;
