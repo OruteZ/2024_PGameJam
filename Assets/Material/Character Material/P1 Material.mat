@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterMaterial
+  m_Name: P1 Material
   m_Shader: {fileID: -6465566751694194690, guid: 72c20c89a80eaf94f9f883c5f62e0fe5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -57,7 +57,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _HitColor: {r: 1, g: 1, b: 1, a: 0}
-    - _OutlineColor: {r: 1, g: 0.25, b: 0.25, a: 1}
+    - _HitColor: {r: 1.6313726, g: 1.6470588, b: 2, a: 0}
+    - _OutlineColor: {r: 0.343848, g: 0.37712362, b: 2.828427, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -18,6 +18,10 @@ public abstract class Player : MonoBehaviour
     
     public float skillCooldown;
     private bool _canUseSkill = true;
+
+    [Header("Hit Setting")]
+    [SerializeField] float hitEffectDur = 0.5f;
+    [SerializeField] AnimationCurve hitEffectCurve;
     
     [Header("Dont Touch")]
     [SerializeField] private int isInvincible;
@@ -28,6 +32,8 @@ public abstract class Player : MonoBehaviour
     [SerializeField] protected AnimationAdaptor playerAnimation;
 
     public float ultimateGauge;
+
+    SpriteRenderer spriteRenderer;
     
     public int GetStackedDamage()
     {
@@ -36,6 +42,7 @@ public abstract class Player : MonoBehaviour
     
     private void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         playerAnimation = GetComponent<AnimationAdaptor>();
     }
 
@@ -50,7 +57,10 @@ public abstract class Player : MonoBehaviour
         if(isInvincible > 0) return;
         
         SoundManager.Instance.PlaySFX("hit");
-        
+
+        StopCoroutine("HitEffect");
+        StartCoroutine("HitEffect");
+
         stackedDamage += damage;
 
         ultimateGauge += damage * 0.2f * 0.01f;
@@ -58,6 +68,20 @@ public abstract class Player : MonoBehaviour
         playerAnimation.GetHit(knockbackPower >= 10 ? 0.5f : 0.1f, knockbackPower);
         
         Invincible();
+    }
+
+    IEnumerator HitEffect()
+    {
+        float _time = 0f;
+        while(_time < hitEffectDur)
+        {
+            spriteRenderer.material.SetFloat("_HitValue", hitEffectCurve.Evaluate(_time / hitEffectDur));
+            _time += Time.deltaTime;
+
+            yield return null;
+        }
+
+        yield break;
     }
     
     public Vector2 GetFacing()
@@ -127,8 +151,11 @@ public abstract class Player : MonoBehaviour
     private IEnumerator SkillCoolDownCoroutine()
     {
         _canUseSkill = false;
+        spriteRenderer.material.SetFloat("_isOutline", 0f);
+
         yield return new WaitForSeconds(skillCooldown);
         _canUseSkill = true;
+        spriteRenderer.material.SetFloat("_isOutline", 1f);
     }
 
     private void Die()
