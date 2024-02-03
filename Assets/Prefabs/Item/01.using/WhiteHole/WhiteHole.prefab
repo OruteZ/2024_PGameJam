@@ -5146,3 +5146,4 @@ MonoBehaviour:
   attackForce: 10
   cameraShake: 0.3
   centerObj: {fileID: 1753863569}
+  audio: {fileID: 8300000, guid: bfcff3102b769df48b08bd3fd4a3c6e3, type: 3}

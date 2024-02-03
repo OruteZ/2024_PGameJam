@@ -58,6 +58,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bfcff3102b769df48b08bd3fd4a3c6e3, type: 3}
   - {fileID: 8300000, guid: b740fbe3b5a42c6409d525c0836326b5, type: 3}
   - {fileID: 8300000, guid: 156615a2bc4826247b98ae449a7fd80e, type: 3}
+  - {fileID: 8300000, guid: adad97d269185e043bbfaaf4fbf8131a, type: 3}
+  - {fileID: 8300000, guid: e055da99a474a7445b6938cdd01db759, type: 3}
+  - {fileID: 8300000, guid: bc99c1309b94c6f4d8a1e593d3d79502, type: 3}
+  - {fileID: 8300000, guid: 68861c5044877b543a586bbbf27da9e0, type: 3}
   backgroundMusicClips:
   - {fileID: 8300000, guid: 528859c4f4479e04caeea2fd2274d5ff, type: 3}
   - {fileID: 8300000, guid: 5a0be47d709dad546a4f3db5995a89d3, type: 3}

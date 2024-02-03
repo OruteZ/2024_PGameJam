@@ -24,6 +24,8 @@ public class BlackHole : MonoBehaviour
     [SerializeField] GameObject centerObj;
     Vector3 defaultCenterScale = Vector3.one;
 
+    [Space(5f), SerializeField] AudioClip audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,8 @@ public class BlackHole : MonoBehaviour
 
         StartCoroutine(centerAnim());
         StartCoroutine(CameraShake());
+
+        Utility.Manager.SoundManager.Instance.PlaySFX(audio.name);
     }
 
     // Update is called once per frame

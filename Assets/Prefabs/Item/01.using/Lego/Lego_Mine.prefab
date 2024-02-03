@@ -132,3 +132,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyEffect: {fileID: 6865798784970130774, guid: ca612e16d9779aa45bb19ed5ed79adb8, type: 3}
+  cameraShakeAmount: 0.5
+  audio: {fileID: 8300000, guid: adad97d269185e043bbfaaf4fbf8131a, type: 3}

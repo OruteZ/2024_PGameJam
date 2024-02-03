@@ -249,6 +249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyEffect: {fileID: 6865798784970130774, guid: ca612e16d9779aa45bb19ed5ed79adb8, type: 3}
+  cameraShakeAmount: 0.5
+  audio: {fileID: 8300000, guid: bc99c1309b94c6f4d8a1e593d3d79502, type: 3}
 --- !u!50 &6546533033821614623
 Rigidbody2D:
   serializedVersion: 4

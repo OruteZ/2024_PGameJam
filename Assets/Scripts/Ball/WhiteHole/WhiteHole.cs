@@ -25,6 +25,8 @@ public class WhiteHole : MonoBehaviour
     [Header("AnimationSetting")]
     [SerializeField] GameObject centerObj;
 
+    [Space(5f), SerializeField] AudioClip audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,8 @@ public class WhiteHole : MonoBehaviour
 
         StartCoroutine(centerAnim());
         StartCoroutine(SetAttackTimer());
+
+        Utility.Manager.SoundManager.Instance.PlaySFX(audio.name);
     }
 
     // Update is called once per frame
