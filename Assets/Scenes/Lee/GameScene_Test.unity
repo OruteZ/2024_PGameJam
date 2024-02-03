@@ -2795,7 +2795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7126966041026302271, guid: 3ced8378360a16e4393e62ef15153ad6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7126966041026302271, guid: 3ced8378360a16e4393e62ef15153ad6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12055,7 +12055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5207466901614140161, guid: 2cbd369b1b5a2784587698833eb384fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.27
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 5207466901614140161, guid: 2cbd369b1b5a2784587698833eb384fa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12092,14 +12092,6 @@ PrefabInstance:
     - target: {fileID: 5207466901614140162, guid: 2cbd369b1b5a2784587698833eb384fa, type: 3}
       propertyPath: m_Name
       value: Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207466902324422924, guid: 2cbd369b1b5a2784587698833eb384fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207466902324422925, guid: 2cbd369b1b5a2784587698833eb384fa, type: 3}
-      propertyPath: orthographic size
-      value: 6.79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cbd369b1b5a2784587698833eb384fa, type: 3}
@@ -14187,8 +14179,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1565921169}
   - component: {fileID: 1565921168}
+  - component: {fileID: 1565921170}
   m_Layer: 0
-  m_Name: BackGround 1
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14254,13 +14247,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565921167}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 17.93, z: 0}
+  m_LocalPosition: {x: 0, y: 20.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1565921170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565921167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2f568a560628d4393f20d7cd7fb742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPos: {x: 0, y: 20.58, z: 0}
+  lastPos: {x: 0, y: -15.3, z: 0}
+  delayTime: 200
 --- !u!1 &1582262937
 GameObject:
   m_ObjectHideFlags: 0
