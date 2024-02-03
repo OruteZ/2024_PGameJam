@@ -37,6 +37,7 @@ public class BlackHole : MonoBehaviour
         defaultCenterScale = centerObj.transform.localScale;
 
         StartCoroutine(centerAnim());
+        StartCoroutine(CameraShake());
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class BlackHole : MonoBehaviour
     {
         transform.localScale = defaultScale * sizeCurve.Evaluate(_time / lastingTime);
 
-        if(centerObj) centerObj.transform.localScale = defaultCenterScale * sizeCurve.Evaluate(_time / lastingTime);
+        //if(centerObj) centerObj.transform.localScale = defaultCenterScale * sizeCurve.Evaluate(_time / lastingTime);
         _time += Time.deltaTime;
         if(_time >= lastingTime)//특정 시간 지나면 파괴되게 하기
         {
@@ -99,6 +100,18 @@ public class BlackHole : MonoBehaviour
             pos.Normalize();
 
             centerObj.transform.localPosition = pos * 0.1f;
+        }
+    }
+
+    IEnumerator CameraShake()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.5f);
+
+        while (true)
+        {
+            yield return wait;
+
+            if (CameraShaker.Instance) CameraShaker.Instance.ShakeCamera(0.1f);
         }
     }
 

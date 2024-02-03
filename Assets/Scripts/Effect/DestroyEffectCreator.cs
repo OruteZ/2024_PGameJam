@@ -21,7 +21,7 @@ public class DestroyEffectCreator : MonoBehaviour
 
         effect.Play();
 
-        if (Utility.Manager.SoundManager.Instance) Utility.Manager.SoundManager.Instance.PlaySFX(audio.name);
+        if (Utility.Manager.SoundManager.Instance&&audio) Utility.Manager.SoundManager.Instance.PlaySFX(audio.name);
 
         if (CameraShaker.Instance) CameraShaker.Instance.ShakeCamera(cameraShakeAmount);
     }

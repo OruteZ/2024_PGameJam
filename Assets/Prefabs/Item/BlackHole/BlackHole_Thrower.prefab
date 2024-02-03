@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4118917257596331743}
   - component: {fileID: 5439681917622845575}
   - component: {fileID: 5039444362851575153}
+  - component: {fileID: 837190727364419579}
   m_Layer: 0
   m_Name: BlackHole_Thrower
   m_TagString: Untagged
@@ -135,3 +136,24 @@ PolygonCollider2D:
       - {x: 0.24455291, y: 0.04264231}
       - {x: 0.1618092, y: 0.11624454}
       - {x: 0.15190828, y: 0.20338245}
+--- !u!50 &837190727364419579
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892519787311340830}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
