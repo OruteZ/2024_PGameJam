@@ -6,28 +6,28 @@ using Utility.Manager;
 
 public class Option : MonoBehaviour
 {
-    private Slider sfxVolumeSlider;
-    private Slider bgmVolumeSlider;
+    private Slider _sfxVolumeSlider;
+    private Slider _bgmVolumeSlider;
     
     [SerializeField] private GameObject sfxVolumeSliderObj;
     [SerializeField] private GameObject bgmVolumeSliderObj;
     
     private void Awake()
     { 
-        sfxVolumeSlider = sfxVolumeSliderObj.GetComponent<Slider>();
-        bgmVolumeSlider = bgmVolumeSliderObj.GetComponent<Slider>();
+        _sfxVolumeSlider = sfxVolumeSliderObj.GetComponent<Slider>();
+        _bgmVolumeSlider = bgmVolumeSliderObj.GetComponent<Slider>();
         
-        sfxVolumeSlider.value = SoundManager.Instance.SfxVolume;
-        bgmVolumeSlider.value = SoundManager.Instance.BgmVolume;
+        _sfxVolumeSlider.value = SoundManager.Instance.SfxVolume;
+        _bgmVolumeSlider.value = SoundManager.Instance.BgmVolume;
     }
     
     public void SetSfxVolume()
     {
-        SoundManager.Instance.SetSFXVolume(sfxVolumeSlider.value);
+        SoundManager.Instance.SetSFXVolume(_sfxVolumeSlider.value);
     }
     
     public void SetBgmVolume()
     {
-        SoundManager.Instance.SetBGMVolume(bgmVolumeSlider.value);
+        SoundManager.Instance.SetBGMVolume(_bgmVolumeSlider.value);
     }
 }

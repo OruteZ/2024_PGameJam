@@ -79,11 +79,15 @@ namespace Utility.Manager
         // ReSharper disable once InconsistentNaming
         public void SetSFXVolume(float volume)
         {
+            Debug.Log("Set SFX Volume: " + volume);
+
             soundEffectVolume  = volume;
         }
 
         public void SetBGMVolume(float volume)
         {
+            Debug.Log("Set BGM Volume: " + volume);
+            
             backgroundMusicSource.volume = volume;
         }
         
