@@ -46,6 +46,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistent: 1
   backgroundMusicSource: {fileID: 0}
-  soundEffectClips: []
-  backgroundMusicClips: []
+  soundEffectClips:
+  - {fileID: 8300000, guid: 0927f6aa5bc5dab4d8d57a248fc78e86, type: 3}
+  - {fileID: 8300000, guid: 98775114286680548a5f07d03c727b47, type: 3}
+  - {fileID: 8300000, guid: 85701fa2019db7f41a25cd1865bd409e, type: 3}
+  - {fileID: 8300000, guid: 336febcfc04e32a41be3f78047356b58, type: 3}
+  - {fileID: 8300000, guid: ce2c0d065895d324cbc91b06d213e6e6, type: 3}
+  - {fileID: 8300000, guid: 627233552df870443a32768e6e5068b2, type: 3}
+  - {fileID: 8300000, guid: 8aa7211d7e1d09a4786c5b43ef8152d0, type: 3}
+  - {fileID: 8300000, guid: bfcff3102b769df48b08bd3fd4a3c6e3, type: 3}
+  - {fileID: 8300000, guid: b740fbe3b5a42c6409d525c0836326b5, type: 3}
+  backgroundMusicClips:
+  - {fileID: 8300000, guid: 528859c4f4479e04caeea2fd2274d5ff, type: 3}
+  - {fileID: 8300000, guid: 5a0be47d709dad546a4f3db5995a89d3, type: 3}
   soundEffectVolume: 1

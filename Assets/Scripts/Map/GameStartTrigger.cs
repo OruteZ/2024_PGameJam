@@ -48,7 +48,9 @@ public class GameStartTrigger : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         
-        for(int i = 5; i >= 1 ; i--)
+        SoundManager.Instance.PlaySFX("countdown");
+        
+        for(int i = 3; i >= 1 ; i--)
         {
             Call(i);
             yield return new WaitForSeconds(1);
@@ -60,8 +62,10 @@ public class GameStartTrigger : MonoBehaviour
         playerInput[0].canInput = true;
         playerInput[1].canInput = true;
         
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         
+        SoundManager.Instance.PlayBGM("CombatBGM");
+
         Destroy(gameObject);
     }
 

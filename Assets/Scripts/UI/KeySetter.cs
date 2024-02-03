@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Utility.Manager;
 using Utility.ScriptableObject;
 
 public class KeySetter : MonoBehaviour
@@ -17,6 +18,8 @@ public class KeySetter : MonoBehaviour
     public void GetTypingKey(GameObject target)
     {
         string key = target.transform.GetChild(0).GetComponent<TMP_Text>().text;
+        
+        SoundManager.Instance.PlaySFX("menu-select");
         
         gettingInputCoroutine = StartCoroutine(GetTypingKeyCoroutine(key));
     }
@@ -34,6 +37,7 @@ public class KeySetter : MonoBehaviour
                 if (Input.GetKeyDown(keyCode))
                 {
                     inputController.SetKey(keyName, keyCode);
+                    SoundManager.Instance.PlaySFX("menu-select");
                     Reload();
                     yield break;
                 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.Manager;
 using Utility.ScriptableObject;
 
 public class P1 : Player
@@ -52,6 +53,8 @@ public class P1 : Player
         
         //create set collection
         HashSet<Player> attackedPlayers = new HashSet<Player>();
+        
+        SoundManager.Instance.PlaySFX("itemPickup");
         
         float time = 0;
         while (time < attackCooldown)

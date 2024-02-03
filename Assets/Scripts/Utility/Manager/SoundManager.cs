@@ -76,6 +76,7 @@ namespace Utility.Manager
             Debug.Log("Background music not found: " + name);
         }
         
+        // ReSharper disable once InconsistentNaming
         public void SetSFXVolume(float volume)
         {
             soundEffectVolume  = volume;
@@ -89,5 +90,10 @@ namespace Utility.Manager
         public float SfxVolume => soundEffectVolume;
         
         public float BgmVolume => backgroundMusicSource.volume;
+
+        public void StopBGM()
+        {
+            backgroundMusicSource.Stop();
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using Utility;
 using Utility.Attribute;
 using Utility.Generic;
+using Utility.Manager;
 
 [Prefab("GameManager", "Singleton")]
 public class GameManager : Singleton<GameManager>
@@ -118,6 +119,7 @@ public class GameManager : Singleton<GameManager>
     {
         PlayerDie(deadPlayerNumber);
         
+        
         //save ultimate gauge
         if (deadPlayerNumber == 1)
         {
@@ -128,9 +130,12 @@ public class GameManager : Singleton<GameManager>
             player2UltimateGauge = player2Reference.ultimateGauge;
         }
         
+        SoundManager.Instance.PlaySFX("explosion");
         if (IsGameOver())
         {
             StartCoroutine(FinishGame());
+            SoundManager.Instance.PlaySFX("game-over");
+            SoundManager.Instance.StopBGM();
         }
     }
 

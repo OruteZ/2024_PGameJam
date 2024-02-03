@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.Manager;
 using Utility.ScriptableObject;
 
 public abstract class Player : MonoBehaviour
@@ -46,6 +47,8 @@ public abstract class Player : MonoBehaviour
     {
         if(isInvincible > 0) return;
         
+        SoundManager.Instance.PlaySFX("hit");
+        
         stackedDamage += damage;
 
         ultimateGauge += damage * 0.2f * 0.01f;
@@ -61,7 +64,7 @@ public abstract class Player : MonoBehaviour
     }
 
     private void Pick()
-    {
+    { 
         //if there is no item, pick item
         if (currentItem != null) return;
         
@@ -73,6 +76,7 @@ public abstract class Player : MonoBehaviour
 
             currentItem = item;
             item.PickItem(this);
+            SoundManager.Instance.PlaySFX("itemPickup");
             break;
         }
     }

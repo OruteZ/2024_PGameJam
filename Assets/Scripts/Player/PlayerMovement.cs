@@ -9,6 +9,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using Utility.Manager;
 using Utility.ScriptableObject;
 
 public class PlayerMovement : MonoBehaviour
@@ -272,6 +273,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
 	{
         OnJump.Invoke();
+        SoundManager.Instance.PlaySFX("jump");
         
 		//Ensures we can't call Jump multiple times from one press
 		LastPressedJumpTime = 0;

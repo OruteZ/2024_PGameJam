@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.Manager;
 
 public class Drone : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class Drone : MonoBehaviour
     {
         //shoot lazer
         lazer.SetActive(true);
+        SoundManager.Instance.PlaySFX("explosion-m");
         CameraShaker.Instance.ShakeCamera(1, Vector2.right);
         //wait for 0.5 seconds
         yield return new WaitForSeconds(2f);
