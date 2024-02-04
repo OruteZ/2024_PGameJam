@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6601140666910833503}
   - component: {fileID: 5093773209067463181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5999924819630953318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AtkTsf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5999924820398793030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ThrowTSF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 5999924820671688970}
   - component: {fileID: 5999924820671688971}
   - component: {fileID: 5999924820671688968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ MonoBehaviour:
   _groundCheckSize: {x: 0.49, y: 0.06}
   _nonGroundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   OnJump:
     m_PersistentCalls:
       m_Calls: []
@@ -420,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5999924820984556715}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

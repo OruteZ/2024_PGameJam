@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3776808634525099699}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ultimatePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5999924819630953318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AtkTsf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5999924820398793030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ThrowTSF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5999924820671688971}
   - component: {fileID: 5999924820671688968}
   - component: {fileID: 5671329976591733279}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Art Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ MonoBehaviour:
   _groundCheckSize: {x: 0.49, y: 0.06}
   _nonGroundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   OnJump:
     m_PersistentCalls:
       m_Calls: []
@@ -412,7 +412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5999924820984556715}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4306981182712154086}
   - component: {fileID: 1397481013241968361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 2796123444489928654}
   - component: {fileID: 5743157196272627534}
   - component: {fileID: 6165658657129045074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LaserParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
