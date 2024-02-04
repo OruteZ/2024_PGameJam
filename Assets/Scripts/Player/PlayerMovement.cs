@@ -109,9 +109,12 @@ public class PlayerMovement : MonoBehaviour
 		#region COLLISION CHECKS
 		if (!IsJumping)
 		{
+            // LayerMask groundLayer = 1 << LayerMask.NameToLayer("Ground");
 			//Ground Check -> 레이어 체크를 체크 안할 레이어를 정해서 이로 변경
 			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, ~_nonGroundLayer)) //checks if set box overlaps with ground
 			{
+                
+                
 				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
                 _jumpCount = 0;
             }		
