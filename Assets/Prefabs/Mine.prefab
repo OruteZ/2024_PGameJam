@@ -137,5 +137,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  knockbackPower: 20
+  knockbackPower: 10
   explosionEffect: {fileID: 8228313115568190816, guid: 712e941cd8f2fff419cf5ac4aad91812, type: 3}
