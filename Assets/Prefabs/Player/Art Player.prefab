@@ -224,6 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: fc791711c86708249b623556d1e75c90, type: 2}
   inputController: {fileID: 11400000, guid: 4d11375ccf95aad40acb322dbfb3cbd8, type: 2}
+  noFrictionMaterial: {fileID: 6200000, guid: 7158d0ef087f7084cb886b062c1b82d7, type: 2}
+  fullFrictionMaterial: {fileID: 6200000, guid: 94a08c71562862248adf63a9b89ff912, type: 2}
   _groundCheckPoint: {fileID: 5999924820984556715}
   _groundCheckSize: {x: 0.49, y: 0.06}
   _nonGroundLayer:

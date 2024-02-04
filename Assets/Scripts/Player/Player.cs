@@ -35,7 +35,8 @@ public abstract class Player : MonoBehaviour
     public float ultimateGauge;
 
     SpriteRenderer spriteRenderer;
-    
+    private static readonly int IS_OUTLINE = Shader.PropertyToID("_isOutline");
+
     public int GetStackedDamage()
     {
         return (int)(stackedDamage);
@@ -61,16 +62,16 @@ public abstract class Player : MonoBehaviour
         
         SoundManager.Instance.PlaySFX("hit");
 
-        StopCoroutine("HitEffect");
-        StartCoroutine("HitEffect");
+        StopCoroutine(nameof(HitEffect));
+        StartCoroutine(nameof(HitEffect));
 
         stackedDamage += damage;
 
-        ultimateGauge += damage * 0.2f * 0.01f;
+        ultimateGauge += damage * 0.5f * 0.01f;
         playerMovement.Knockback(knockbackDir, knockbackPower * (1 + stackedDamage * 0.01f));
         playerAnimation.GetHit(knockbackPower >= 10 ? 0.5f : 0.1f, knockbackPower);
         
-        Invincible();
+        Invincible(invincibleTime);
     }
 
     IEnumerator HitEffect()
@@ -137,7 +138,7 @@ public abstract class Player : MonoBehaviour
 
     public void Update()
     {
-        if (transform.position.y <= -100f)
+        if (transform.position.y <= -100f || Mathf.Abs(transform.position.x) >= 50f)
         {
             Die();
             return;
@@ -166,11 +167,11 @@ public abstract class Player : MonoBehaviour
     private IEnumerator SkillCoolDownCoroutine()
     {
         _canUseSkill = false;
-        spriteRenderer.material.SetFloat("_isOutline", 0f);
+        spriteRenderer.material.SetFloat(IS_OUTLINE, 0f);
 
         yield return new WaitForSeconds(skillCooldown);
         _canUseSkill = true;
-        spriteRenderer.material.SetFloat("_isOutline", 1f);
+        spriteRenderer.material.SetFloat(IS_OUTLINE, 1f);
     }
 
     private void Die()
@@ -180,15 +181,15 @@ public abstract class Player : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Invincible()
+    public void Invincible(float time)
     {
-        StartCoroutine(InvincibleCoroutine());
+        StartCoroutine(InvincibleCoroutine(time));
     }
     
-    private IEnumerator InvincibleCoroutine()
+    private IEnumerator InvincibleCoroutine(float time)
     {
         isInvincible++;
-        yield return new WaitForSeconds(invincibleTime);
+        yield return new WaitForSeconds(time);
         isInvincible--;
     }
 

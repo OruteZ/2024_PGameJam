@@ -50,6 +50,8 @@ public class ArtThrowObj : MonoBehaviour
             if (player != _usingPlayer)
             {
                 player.TakeDamage(damage, new Vector2(_facing, 1), knockbackPower);
+                _usingPlayer.ultimateGauge += damage * 0.33f * 0.01f;
+
                 Destroy(gameObject);
             }
         }

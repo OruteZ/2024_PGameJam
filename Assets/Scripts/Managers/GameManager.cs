@@ -94,6 +94,8 @@ public class GameManager : Singleton<GameManager>
             player2Reference = player;
             player2Reference.ultimateGauge = player2UltimateGauge;
         }
+        
+        player.Invincible(2f);
     }
 
     public bool IsGameOver() => player1Life <= 0 || player2Life <= 0;

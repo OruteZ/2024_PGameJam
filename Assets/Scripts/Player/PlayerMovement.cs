@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
 	//just paste in all the parameters, though you will need to manuly change all references in this script
 	public PlayerData Data;
 	public InputController inputController;
+    
+    public PhysicsMaterial2D noFrictionMaterial;
+    public PhysicsMaterial2D fullFrictionMaterial;
 
 	#region COMPONENTS
     public Rigidbody2D RB { get; private set; }
@@ -327,6 +330,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Reset the player's current velocity
         RB.velocity = Vector2.zero;
+        
+        //set material
 
         // Apply a force to the player in the knockback direction
         RB.AddForce(knockbackDir.normalized * knockbackPower, ForceMode2D.Impulse);
@@ -341,6 +346,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public IEnumerator RagdollCoroutine(float velocityThreshold)
     {
+        GetComponent<BoxCollider2D>().sharedMaterial = noFrictionMaterial;
         _isConst = true;
         // Rigidbody2D의 속도가 특정 임계값 이하가 될 때까지 기다림
         while (RB.velocity.magnitude > velocityThreshold)
@@ -348,6 +354,8 @@ public class PlayerMovement : MonoBehaviour
             yield return null;  // 다음 프레임까지 기다림
         }
         _isConst = false;
+        //set material
+        GetComponent<BoxCollider2D>().sharedMaterial = fullFrictionMaterial;
     }
     
     private bool _isConst;
