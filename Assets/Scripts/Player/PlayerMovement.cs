@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Created by @DawnosaurDev at youtube.com/c/DawnosaurStudios
 	Thanks so much for checking this out and I hope you find it helpful! 
 	If you have any further queries, questions or feedback feel free to reach out on my twitter or leave a comment on youtube :D
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     #region LAYERS & TAGS
     [Header("Layers & Tags")]
-	[SerializeField] private LayerMask _groundLayer;
+	[SerializeField] private LayerMask _nonGroundLayer;
 	#endregion
 
     private void Awake()
@@ -106,8 +106,8 @@ public class PlayerMovement : MonoBehaviour
 		#region COLLISION CHECKS
 		if (!IsJumping)
 		{
-			//Ground Check
-			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) //checks if set box overlaps with ground
+			//Ground Check -> 레이어 체크를 체크 안할 레이어를 정해서 이로 변경
+			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, ~_nonGroundLayer)) //checks if set box overlaps with ground
 			{
 				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
                 _jumpCount = 0;
