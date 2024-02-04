@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Utility.Manager;
 using Utility.ScriptableObject;
 
 public class GameStartTrigger : MonoBehaviour
 {
-    public TMP_Text countDownText;
+    public List<Sprite> countDownSprites;
+    public Image countDownImage;
+    public Transform startPosition;
+    public Transform endPosition;
 
     public InputController[] playerInput;
 
@@ -49,15 +54,13 @@ public class GameStartTrigger : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         SoundManager.Instance.PlaySFX("countdown");
-        
-        for(int i = 3; i >= 1 ; i--)
+
+        for(int i = 1; i < 5; i++)
         {
             Call(i);
-            yield return new WaitForSeconds(1);
+            if(i != 4) yield return new WaitForSeconds(1);
         }
-        
-        countDownText.text = "START!";
-        //todo : play sound
+
         
         playerInput[0].canInput = true;
         playerInput[1].canInput = true;
@@ -66,12 +69,29 @@ public class GameStartTrigger : MonoBehaviour
         
         SoundManager.Instance.PlayBGM("CombatBGM");
 
-        Destroy(gameObject);
+        // Destroy(gameObject);
+    }
+
+    private IEnumerator ImageLerp(Vector3 startPositionPosition, Vector3 endPositionPosition)
+    {
+        //1 second lerp
+        float time = 0;
+        while (time < 1)
+        {
+            time += Time.deltaTime;
+            countDownImage.transform.position = Vector3.Lerp(startPositionPosition, endPositionPosition, time);
+            yield return null;
+        }
     }
 
     public void Call(int second)
     {
-        countDownText.text = second.ToString();
-        //todo : play sound
+        countDownImage.sprite = countDownSprites[second - 1];
+        
+        if(second == 4) 
+            StartCoroutine(ImageLerp(endPosition.position, startPosition.position));
+        else if(second == 1) 
+            StartCoroutine(ImageLerp(startPosition.position, endPosition.position));
+            
     }
 }
