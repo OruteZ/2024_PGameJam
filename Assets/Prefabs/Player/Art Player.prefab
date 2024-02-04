@@ -226,9 +226,9 @@ MonoBehaviour:
   inputController: {fileID: 11400000, guid: 4d11375ccf95aad40acb322dbfb3cbd8, type: 2}
   _groundCheckPoint: {fileID: 5999924820984556715}
   _groundCheckSize: {x: 0.49, y: 0.06}
-  _groundLayer:
+  _nonGroundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   OnJump:
     m_PersistentCalls:
       m_Calls: []
