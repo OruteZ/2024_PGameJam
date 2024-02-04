@@ -103,7 +103,7 @@ MonoBehaviour:
   usingPlayer: {fileID: 0}
   isChangingToSameSprite: 1
   throwingObj: {fileID: 6546533033821614816, guid: 75f2269d57b71864bb9da689e0e01fd3, type: 3}
-  throwForceAmount: 20
+  throwForceAmount: 15
 --- !u!50 &6227281587660344408
 Rigidbody2D:
   serializedVersion: 4

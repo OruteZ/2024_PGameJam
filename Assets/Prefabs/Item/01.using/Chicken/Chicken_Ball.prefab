@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explodeRange: 5
   explodeDamage: 20
-  explodePower: 10
+  explodePower: 8
 --- !u!114 &4754127573844199581
 MonoBehaviour:
   m_ObjectHideFlags: 0

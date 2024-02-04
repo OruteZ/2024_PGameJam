@@ -103,7 +103,7 @@ MonoBehaviour:
   explodeRange: 2
   explodeDamage: 10
   explodePower: 10
-  explodeDelay: 5
+  explodeDelay: 2
   effectCurve:
     serializedVersion: 2
     m_Curve:
