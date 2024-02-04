@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -15,6 +16,22 @@ public class PlayerStatusUI : MonoBehaviour
     [SerializeField] private Image fill;
     [SerializeField] private Sprite rainbow;
     [SerializeField] private Sprite white;
+    
+    public readonly List<Color> damageColors = new List<Color>
+    {
+        //white
+        new Color(1, 1, 1),
+        //FFF537
+        new Color(1, 0.96f, 0.22f),
+        //E6B500
+        new Color(0.9f, 0.71f, 0),
+        //E68900
+        new Color(0.9f, 0.54f, 0),
+        //EA0011
+        new Color(0.92f, 0, 0.07f),
+        //B7000B
+        new Color(0.71f, 0, 0.04f)
+    };
 
     public int playerNumber;
 
@@ -55,7 +72,23 @@ public class PlayerStatusUI : MonoBehaviour
     private void UpdateDamageText()
     {
         int damage = playerReference.GetStackedDamage();
+        Color color = Color.black;
+        
+        // 0 ~ 19 : white
+        if (damage < 20) color = damageColors[0];
+        // 20 ~ 39 : FFF537
+        else if (damage < 40) color = damageColors[1];
+        // 40 ~ 59 : E6B500
+        else if (damage < 60) color = damageColors[2];
+        // 60 ~ 79 : E68900
+        else if (damage < 80) color = damageColors[3];
+        // 80 ~ 99 : EA0011
+        else if (damage < 100) color = damageColors[4];
+        // 100 : B7000B
+        else color = damageColors[5];
+
         damageText.text = damage + "%";
+        damageText.color = color;
     }
 
     private void UpdateUltimateGauge()

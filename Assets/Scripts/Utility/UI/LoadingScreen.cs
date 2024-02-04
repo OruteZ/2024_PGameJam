@@ -31,9 +31,9 @@ namespace Utility.UI
                 time += Time.deltaTime;
                 float lerp = lerpCurve.Evaluate(time / lerpDuration);
                 programmingImage.rectTransform.anchoredPosition = 
-                    Vector2.Lerp(inCline.normalized * outOfScreenDistance, Vector2.zero, lerp);
-                artImage.rectTransform.anchoredPosition = 
                     Vector2.Lerp(-inCline.normalized * outOfScreenDistance, Vector2.zero, lerp);
+                artImage.rectTransform.anchoredPosition = 
+                    Vector2.Lerp(inCline.normalized * outOfScreenDistance, Vector2.zero, lerp);
                 yield return null;
             }
             

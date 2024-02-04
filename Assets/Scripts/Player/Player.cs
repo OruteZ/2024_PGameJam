@@ -137,6 +137,12 @@ public abstract class Player : MonoBehaviour
 
     public void Update()
     {
+        if (transform.position.y <= -100f)
+        {
+            Die();
+            return;
+        }
+        
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0)) ultimateGauge = 1f;
 #endif
@@ -169,7 +175,9 @@ public abstract class Player : MonoBehaviour
 
     private void Die()
     {
+        GameManager.Instance.Dead(playerNumber);
         
+        Destroy(gameObject);
     }
 
     private void Invincible()

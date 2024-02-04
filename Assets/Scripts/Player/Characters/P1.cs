@@ -117,16 +117,20 @@ public class P1 : Player
         inputController.canInput = false;
         Vector2 originalPosition = transform.position;
         Vector2 targetPosition = originalPosition + GetFacing() * skillRange;
+        
+        //calculate speed
+        float speed = skillRange / skillDuration;
+        
+
         float timeElapsed = 0;
 
         while (timeElapsed < skillDuration)
         {
-            transform.position = Vector2.Lerp(originalPosition, targetPosition, timeElapsed / skillDuration);
+            playerMovement.RB.position += GetFacing() * (speed * Time.deltaTime);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = targetPosition;
         _isUsingSkill = false;
         
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;

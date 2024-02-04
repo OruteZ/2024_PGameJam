@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7675340578763265775}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: DontDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   damage: 10
-  knockbackPower: 10
+  knockbackPower: 20
   lazerCurve:
     serializedVersion: 2
     m_Curve:

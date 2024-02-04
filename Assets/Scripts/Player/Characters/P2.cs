@@ -22,7 +22,6 @@ public class P2 : Player
     public GameObject ultimateEffect;
     public AnimationCurve lazerAnimCurve;
     public ParticleSystem lazerParticle;
-
     private Vector2 direction => playerMovement.IsFacingRight ? new Vector2(1, 1) : new Vector2(-1, 1);
     
     
@@ -125,7 +124,7 @@ public class P2 : Player
             yield return null;
             //if last 0.5second, knockbackPower *= 10
             float knockbackPower = 
-                ultimateDuration <= 0.5f ? ultimateKnockbackPower * 10 : ultimateKnockbackPower;
+                ultimateDuration <= 1f ? ultimateKnockbackPower * 100 : ultimateKnockbackPower;
             
             var colliders = Physics2D.OverlapBoxAll(ultimateSpawnPosition.position, ultimateSpawnRect.size, 0);
             foreach (var collider in colliders)

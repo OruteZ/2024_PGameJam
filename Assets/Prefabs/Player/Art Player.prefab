@@ -208,7 +208,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 4480546d2733dac4c8b4df8dff51b20f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &5999924820671688972
 MonoBehaviour:
@@ -356,7 +356,7 @@ MonoBehaviour:
     height: 1
   ultimateSpawnPosition: {fileID: 3776808634525099699}
   ultimateDamage: 2
-  ultimateKnockbackPower: 2
+  ultimateKnockbackPower: 5
   ultimateEffect: {fileID: 2523914139929525618, guid: f4dd36a3e684573469b0a226baab8010, type: 3}
   lazerAnimCurve:
     serializedVersion: 2

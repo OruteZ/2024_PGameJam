@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 629249361}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.37, y: 1.63, z: -0.093786955}
-  m_LocalScale: {x: 50, y: 1, z: 1}
+  m_LocalScale: {x: 1000, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1987602277}
@@ -291,6 +291,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &828316141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3128576198980074486, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+  m_PrefabInstance: {fileID: 873166811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!251 &828316145
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828316141}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 1
+  m_SideArc: 1
 --- !u!1001 &873166811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,6 +322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1225767082999681855, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2002630392755930377, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
       propertyPath: m_Name
       value: Room
@@ -345,6 +373,10 @@ PrefabInstance:
     - target: {fileID: 2002630392755930378, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078329991451833127, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
@@ -701,6 +733,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac0cd5180b021614d96dd217ff9aee00, type: 3}
+--- !u!1 &1644663220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7940606165559548910, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+  m_PrefabInstance: {fileID: 873166811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!251 &1644663224
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644663220}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 1
+  m_SideArc: 1
 --- !u!1 &1817282114
 GameObject:
   m_ObjectHideFlags: 0

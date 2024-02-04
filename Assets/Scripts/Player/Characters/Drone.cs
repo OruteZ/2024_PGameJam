@@ -55,10 +55,6 @@ public class Drone : MonoBehaviour
         CameraShaker.Instance.ShakeCamera(1, Vector2.right);
         //wait for 0.5 seconds
         yield return StartCoroutine(LazerCoroutine());
-        lazer.SetActive(false);
-        
-        //move to shoot position
-        StartCoroutine(OutMoveCoroutine(_shootPosition, _targetPosition));
     }
 
     IEnumerator LazerCoroutine()
@@ -72,7 +68,7 @@ public class Drone : MonoBehaviour
 
         while (delayTime > _time)
         {
-            size.x = defaultSize.x * lazerCurve.Evaluate(_time / delayTime);
+            size.x = defaultSize.x * lazerCurve.Evaluate( _time / delayTime);
 
             lazer.transform.localScale = size;
 
@@ -80,8 +76,11 @@ public class Drone : MonoBehaviour
 
             yield return null;
         }
-
-        yield break;
+        
+        lazer.SetActive(false);
+        
+        //move to shoot position
+        StartCoroutine(OutMoveCoroutine(_shootPosition, _targetPosition));
     }
 
     private IEnumerator FirstMoveCoroutine(Vector3 start, Vector3 target)
