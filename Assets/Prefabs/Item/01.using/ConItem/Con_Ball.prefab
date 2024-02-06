@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChangingToSameSprite: 1
-  createObj: {fileID: 0}
+  createObj: {fileID: 1779185062826209556, guid: f7ff4171503e20147901d64490133e38, type: 3}
 --- !u!50 &286843153496086334
 Rigidbody2D:
   serializedVersion: 4
