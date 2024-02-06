@@ -4992,7 +4992,7 @@ GameObject:
   - component: {fileID: 8369378908773897811}
   - component: {fileID: 8369378908773897813}
   - component: {fileID: 4939063294471594894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5084,7 +5084,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4.5
+  m_Radius: 4
 --- !u!114 &4939063294471594894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5097,7 +5097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf0440f3bce76a4196c11bbd21dd73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceAmount: 10
+  forceAmount: 4
   lastingTime: 6
   sizeCurve:
     serializedVersion: 2

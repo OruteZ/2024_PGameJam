@@ -4992,7 +4992,7 @@ GameObject:
   - component: {fileID: 6296640901411354391}
   - component: {fileID: 6296640901411354385}
   - component: {fileID: 7480263108907926219}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WhiteHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5084,7 +5084,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4.5
+  m_Radius: 4
 --- !u!114 &7480263108907926219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5097,7 +5097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7ccdb751246594c8d7d36a467dc20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceAmount: 6
+  forceAmount: 3
   lastingTime: 7
   sizeCurve:
     serializedVersion: 2
