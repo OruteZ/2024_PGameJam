@@ -73,6 +73,7 @@ public class BlackHole : MonoBehaviour
     void GiveDamage(Player player)
     {
         if (isDelay) return;
+        isDelay = true;
         StartCoroutine("SetAttackTimer");//DPS 공격이 아닌 정해진 시간마다 한번씩 데미지 부여
 
         player.TakeDamage(attackAmount);
@@ -80,11 +81,11 @@ public class BlackHole : MonoBehaviour
 
     IEnumerator SetAttackTimer()
     {
-        isDelay = false;
+        isDelay = true;
 
         yield return new WaitForSeconds(attackDelay);
 
-        isDelay = true;
+        isDelay = false;
     }
     #endregion Attack Setting
 
