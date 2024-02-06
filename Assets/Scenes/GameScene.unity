@@ -191,6 +191,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015885851, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310635019, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641561697, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661452795, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1737410604, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.28
+      objectReference: {fileID: 0}
     - target: {fileID: 2002630392755930377, guid: f1fb8978fa9134d4ca2892106737708e, type: 3}
       propertyPath: m_Name
       value: Room
