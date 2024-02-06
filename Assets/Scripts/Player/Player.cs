@@ -34,6 +34,9 @@ public abstract class Player : MonoBehaviour
 
     public float ultimateGauge;
 
+    [SerializeField, Space(10f)]
+    float deadLine_Y = -20f;
+    
     SpriteRenderer spriteRenderer;
     private static readonly int IS_OUTLINE = Shader.PropertyToID("_isOutline");
 
@@ -138,7 +141,7 @@ public abstract class Player : MonoBehaviour
 
     public void Update()
     {
-        if (transform.position.y <= -100f || Mathf.Abs(transform.position.x) >= 50f)
+        if (transform.position.y <= deadLine_Y || Mathf.Abs(transform.position.x) >= 50f)
         {
             Die();
             return;

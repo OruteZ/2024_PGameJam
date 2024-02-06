@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,7 +9,8 @@ public class DeadZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.Dead(other.GetComponent<Player>().playerNumber);
+            //GameManager.Instance.Dead(other.GetComponent<Player>().playerNumber);
+            return;
         }
         
         if (!other.CompareTag("DontDead"))
