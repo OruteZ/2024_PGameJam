@@ -313,7 +313,7 @@ MonoBehaviour:
   invincibleTime: 0.2
   attackCooldown: 0.3
   stackedDamage: 0
-  skillCooldown: 2
+  skillCooldown: 5
   hitEffectDur: 0.5
   hitEffectCurve:
     serializedVersion: 2
@@ -345,6 +345,7 @@ MonoBehaviour:
   playerMovement: {fileID: 5999924820671688972}
   playerAnimation: {fileID: 5999924820671688968}
   ultimateGauge: 0
+  deadLine_Y: -20
   attackTsf: {fileID: 5999924819630953318}
   attackObj: {fileID: 7143173206621118224, guid: 28194c3b375415041aa6573855275f5c, type: 3}
   mine: {fileID: 255039418762596693, guid: 7352ef527091a5f468b40cbf7c93d547, type: 3}
